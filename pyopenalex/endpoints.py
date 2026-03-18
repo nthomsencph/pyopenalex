@@ -178,3 +178,72 @@ class Endpoint(Generic[T]):
             The total number of matching entities.
         """
         return self.filter(**kwargs).count()
+
+    def _resolve_entity_id(self, endpoint_path: str, name: str) -> str:
+        """Search an entity endpoint by name and return the first result's ID.
+
+        Raises:
+            ValueError: If no entity is found matching the name.
+        """
+        data = self._http.request("GET", endpoint_path, params={"search": name, "per_page": 1})
+        results = data.get("results", [])
+        if not results:
+            raise ValueError(f"No entity found matching '{name}' at {endpoint_path}")
+        return results[0]["id"]
+
+
+class WorksEndpoint(Endpoint[T]):
+    """Extended endpoint for works with convenience methods for common query patterns.
+
+    Adds ``by_author()``, ``by_institution()``, ``by_source()``,
+    ``by_topic()``, and ``by_funder()`` for two-step ID resolution.
+    """
+
+    def by_author(self, name: str) -> QueryBuilder[T]:
+        """Find works by an author name. Resolves the name to an ID first.
+
+        Args:
+            name: Author name to search for (e.g. ``"Einstein"``).
+
+        Example::
+
+            client.works.by_author("Einstein").sort("cited_by_count", desc=True).get(10)
+        """
+        author_id = self._resolve_entity_id("/authors", name)
+        return self.filter(authorships={"author": {"id": author_id}})
+
+    def by_institution(self, name: str) -> QueryBuilder[T]:
+        """Find works from an institution. Resolves the name to an ID first.
+
+        Args:
+            name: Institution name (e.g. ``"MIT"``, ``"Harvard University"``).
+        """
+        inst_id = self._resolve_entity_id("/institutions", name)
+        return self.filter(authorships={"institutions": {"id": inst_id}})
+
+    def by_source(self, name: str) -> QueryBuilder[T]:
+        """Find works published in a source. Resolves the name to an ID first.
+
+        Args:
+            name: Source name (e.g. ``"Nature"``, ``"PLOS ONE"``).
+        """
+        source_id = self._resolve_entity_id("/sources", name)
+        return self.filter(primary_location={"source": {"id": source_id}})
+
+    def by_topic(self, name: str) -> QueryBuilder[T]:
+        """Find works on a topic. Resolves the name to an ID first.
+
+        Args:
+            name: Topic name (e.g. ``"machine learning"``).
+        """
+        topic_id = self._resolve_entity_id("/topics", name)
+        return self.filter(topics={"id": topic_id})
+
+    def by_funder(self, name: str) -> QueryBuilder[T]:
+        """Find works funded by a funder. Resolves the name to an ID first.
+
+        Args:
+            name: Funder name (e.g. ``"NIH"``, ``"NSF"``).
+        """
+        funder_id = self._resolve_entity_id("/funders", name)
+        return self.filter(funders={"id": funder_id})

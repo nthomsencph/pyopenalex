@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pyopenalex._http import HttpClient
 from pyopenalex.config import Settings
-from pyopenalex.endpoints import Endpoint
+from pyopenalex.endpoints import Endpoint, WorksEndpoint
 from pyopenalex.models.authors import Author
 from pyopenalex.models.funders import Funder
 from pyopenalex.models.institutions import Institution
@@ -34,17 +34,18 @@ class OpenAlex:
     def __init__(
         self,
         api_key: str | None = None,
-        base_url: str = "https://api.openalex.org",
+        base_url: str | None = None,
         **kwargs: object,
     ) -> None:
-        settings = Settings(
-            api_key=api_key,
-            base_url=base_url,
-            **kwargs,  # type: ignore[arg-type]
-        )
+        overrides: dict[str, object] = {**kwargs}
+        if api_key is not None:
+            overrides["api_key"] = api_key
+        if base_url is not None:
+            overrides["base_url"] = base_url
+        settings = Settings(**overrides)  # type: ignore[arg-type]
         self._http = HttpClient(settings)
 
-        self.works: Endpoint[Work] = Endpoint(self._http, "/works", Work)
+        self.works: WorksEndpoint[Work] = WorksEndpoint(self._http, "/works", Work)
         """Scholarly documents: articles, books, datasets, preprints."""
 
         self.authors: Endpoint[Author] = Endpoint(self._http, "/authors", Author)

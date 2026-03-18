@@ -10,7 +10,7 @@ class Settings(BaseSettings):
     (e.g. ``OPENALEX_API_KEY``, ``OPENALEX_TIMEOUT``).
     """
 
-    model_config = {"env_prefix": "OPENALEX_"}
+    model_config = {"env_prefix": "OPENALEX_", "env_file": ".env"}
 
     api_key: str | None = None
     base_url: str = "https://api.openalex.org"
