@@ -140,7 +140,35 @@ class QueryBuilder(Generic[T]):
             params["filter"] = ",".join(parts)
         return params
 
-    def get(self) -> ListResponse[T]:
+    def get(self, n: int | None = None, *, all: bool = False) -> ListResponse[T]:
+        """Fetch results.
+
+        - ``get()`` returns a single page (default 25 results).
+        - ``get(n)`` returns exactly *n* results, auto-paginating if needed.
+        - ``get(all=True)`` collects every matching result via cursor pagination.
+        """
+        if all:
+            return self._collect(limit=None)
+        if n is None:
+            return self._get_page()
+        if n <= 100:
+            return self.per_page(n)._get_page()
+        return self._collect(limit=n)
+
+    def _collect(self, limit: int | None) -> ListResponse[T]:
+        collected: list[T] = []
+        qb = self.per_page(100)
+        if limit is not None:
+            qb = qb.limit(limit)
+        for item in qb:
+            collected.append(item)
+        return ListResponse[self._model](
+            meta=Meta(count=len(collected), db_response_time_ms=0),
+            results=collected,
+            group_by=[],
+        )
+
+    def _get_page(self) -> ListResponse[T]:
         params = self._build_params()
         data = self._http.request("GET", self._path, params=params)
         return ListResponse[self._model](

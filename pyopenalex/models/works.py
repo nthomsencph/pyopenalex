@@ -122,6 +122,22 @@ class Work(OpenAlexModel):
     updated_date: str | None = None
 
     @property
+    def name(self) -> str | None:
+        return self.display_name
+
+    @property
+    def year(self) -> int | None:
+        return self.publication_year
+
+    @property
+    def citations(self) -> int | None:
+        return self.cited_by_count
+
+    @property
+    def authors(self) -> list[str]:
+        return [a.author.display_name or "Unknown" for a in self.authorships]
+
+    @property
     def abstract(self) -> str | None:
         if not self.abstract_inverted_index:
             return None
