@@ -1,6 +1,6 @@
 # PyOpenAlex
 
-> A Pydantic-powered Python client for the OpenAlex API. Provides typed access to 270M+ scholarly works, 90M+ authors, and 100K+ sources with a chainable query builder, filter expressions, and automatic cursor pagination.
+> A Pydantic-powered Python client for the OpenAlex API. Provides typed access to 270M+ scholarly works, 90M+ authors, and 100K+ sources with a chainable query builder, filter expressions, markdown rendering, and automatic cursor pagination.
 
 PyOpenAlex wraps the OpenAlex API (https://api.openalex.org) with Pydantic models for all entity types. The design follows FastAPI and Pydantic patterns: immutable query builders, typed models, filter expressions as descriptor functions, and environment-based configuration via pydantic-settings.
 
@@ -11,7 +11,7 @@ from pyopenalex import OpenAlex, gt
 
 with OpenAlex(api_key="...") as client:
     for work in client.works.filter(cited_by_count=gt(1000), publication_year=2024).limit(10):
-        print(f"{work.title} ({work.cited_by_count} citations)")
+        print(work.to_markdown(limit_abstract=150))
 ```
 
 ## Core
@@ -27,14 +27,14 @@ with OpenAlex(api_key="...") as client:
 
 ## Query Building
 
-- [query.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/query.py): Immutable QueryBuilder with filter, search, sort, pagination, group_by, and cursor iteration
+- [query.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/query.py): Immutable QueryBuilder with .get(n), .get(all=True), filter, search, sort, limit, and cursor iteration
 - [expressions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/expressions.py): Filter expressions: gt(), lt(), ne(), or_(), between()
 - [endpoints.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/endpoints.py): Typed Endpoint[T] with get, batch get, random, autocomplete, and delegation to QueryBuilder
 
-## Entity Models
+## Entity Models and Rendering
 
-- [models/base.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/base.py): Base model, Meta, dehydrated entities, shared types
-- [models/works.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/works.py): Work, Location, OpenAccess, Authorship, abstract reconstruction
+- [models/base.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/base.py): Base model with to_markdown(), Meta, dehydrated entities, shared types
+- [models/works.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/works.py): Work with aliases (.year, .citations, .authors, .abstract)
 - [models/authors.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/authors.py): Author model
 - [models/sources.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/sources.py): Source model
 - [models/institutions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/institutions.py): Institution model
@@ -42,6 +42,7 @@ with OpenAlex(api_key="...") as client:
 - [models/keywords.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/keywords.py): Keyword model
 - [models/publishers.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/publishers.py): Publisher model
 - [models/funders.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/funders.py): Funder model
+- [markdown.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/markdown.py): Markdown renderers for all entity types with limit_abstract support
 
 ## Optional
 

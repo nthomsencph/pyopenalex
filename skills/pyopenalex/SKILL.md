@@ -51,6 +51,24 @@ works = client.works.get(["W2741809807", "W2100837269"])
 work = client.works.random()
 ```
 
+## Fetching Results
+
+```python
+# Get exactly n results (auto-paginates if n > 100)
+results = client.works.search("CRISPR").get(10)
+
+# Get all matching results
+results = client.works.filter(publication_year=2024, type="dataset").get(all=True)
+
+# Default: single page (25 results)
+results = client.works.search("CRISPR").get()
+
+# Access response
+results.meta        # Meta: count, page, per_page, cost_usd
+results.results     # list[Work]
+results.group_by    # list[GroupByResult]
+```
+
 ## Filtering
 
 IMPORTANT: Always resolve entity names to IDs first. Never filter by name directly.
@@ -95,22 +113,14 @@ results = (
     .search("CRISPR")
     .sort("cited_by_count", desc=True)
     .select("id", "title", "doi", "cited_by_count")
-    .per_page(100)
-    .get()
+    .get(10)
 )
-
-results.meta        # Meta: count, page, per_page, cost_usd
-results.results     # list[Work]
-results.group_by    # list[GroupByResult]
 ```
 
-## Pagination
+## Iteration
 
 ```python
-# Page-based
-page1 = client.works.filter(publication_year=2024).page(1).per_page(100).get()
-
-# Automatic cursor pagination via iteration
+# Automatic cursor pagination
 for work in client.works.filter(publication_year=2024):
     print(work.title)
 
@@ -137,6 +147,33 @@ results = client.works.sample(100, seed=42).get()
 results = client.institutions.autocomplete("harvard")
 ```
 
+## Markdown Rendering
+
+All entities support `.to_markdown()` for LLM-friendly output:
+
+```python
+work = client.works.get("W2741809807")
+print(work.to_markdown())
+
+# Truncate long abstracts
+print(work.to_markdown(limit_abstract=150))
+```
+
+## Convenience Aliases
+
+All entities have `.name` (alias for `display_name`) and `.citations` (alias for `cited_by_count`).
+
+Work also has:
+- `.year` (alias for `publication_year`)
+- `.authors` (list of author name strings)
+- `.abstract` (reconstructed from inverted index)
+
+```python
+work = client.works.get("W2741809807")
+print(f"{work.title} ({work.year}), {work.citations} citations")
+print(f"Authors: {', '.join(work.authors)}")
+```
+
 ## Two-Step ID Resolution Pattern
 
 ```python
@@ -144,15 +181,15 @@ results = client.institutions.autocomplete("harvard")
 client.works.filter(author_name="Einstein")  # Will fail
 
 # CORRECT: resolve to ID first, then filter
-authors = client.authors.search("Einstein").per_page(1).get()
+authors = client.authors.search("Einstein").get(1)
 author_id = authors.results[0].id
-works = client.works.filter(authorships={"author": {"id": author_id}}).get()
+works = client.works.filter(authorships={"author": {"id": author_id}}).get(10)
 ```
 
 ## Key Model Fields
 
 ### Work
-`id`, `doi`, `title`, `publication_year`, `publication_date`, `type`, `language`, `cited_by_count`, `is_retracted`, `is_paratext`, `primary_location`, `locations`, `best_oa_location`, `open_access`, `authorships`, `biblio`, `abstract` (property, reconstructed from inverted index), `topics`, `primary_topic`, `keywords`, `funders`, `awards`, `fwci`, `counts_by_year`, `referenced_works`, `related_works`
+`id`, `doi`, `title`, `publication_year`, `publication_date`, `type`, `language`, `cited_by_count`, `is_retracted`, `is_paratext`, `primary_location`, `locations`, `best_oa_location`, `open_access`, `authorships`, `biblio`, `abstract` (property), `topics`, `primary_topic`, `keywords`, `funders`, `awards`, `fwci`, `counts_by_year`, `referenced_works`, `related_works`
 
 ### Author
 `id`, `orcid`, `display_name`, `works_count`, `cited_by_count`, `summary_stats`, `affiliations`, `last_known_institutions`, `topics`
