@@ -92,3 +92,9 @@ if __name__ == "__main__":
         "and explore what topics are connected to the top result."
     )
     print(result.output)
+
+    print("\n--- Tools called ---")
+    for msg in result.all_messages():
+        for part in msg.parts:
+            if part.part_kind == "tool-call":
+                print(f"  {part.tool_name}({part.args})")
