@@ -28,3 +28,11 @@ class Funder(OpenAlexModel):
     roles: list[Role] = []
     created_date: str | None = None
     updated_date: str | None = None
+
+    @property
+    def name(self) -> str:
+        return self.display_name
+
+    @property
+    def citations(self) -> int | None:
+        return self.cited_by_count

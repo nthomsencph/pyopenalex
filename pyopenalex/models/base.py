@@ -6,6 +6,11 @@ from pydantic import BaseModel, ConfigDict
 class OpenAlexModel(BaseModel):
     model_config = ConfigDict(extra="allow", populate_by_name=True)
 
+    def to_markdown(self, limit_abstract: int | None = None) -> str:
+        from pyopenalex.markdown import to_markdown
+
+        return to_markdown(self, limit_abstract=limit_abstract)
+
 
 class Meta(OpenAlexModel):
     count: int
