@@ -1,4 +1,5 @@
 import pytest
+from tenacity import stop_after_attempt, wait_none
 
 from pyopenalex._http import HttpClient
 from pyopenalex.config import Settings
@@ -20,6 +21,12 @@ class TestHttpClient:
         settings = Settings(**kwargs)
         client = HttpClient(settings)
 
+        # Disable wait between retries in tests
+        client._request_with_retry.retry.wait = wait_none()
+        client._request_with_retry.retry.stop = stop_after_attempt(
+            settings.max_retries
+        )
+
         call_count = 0
 
         def fake_request(method, url, params=None):
@@ -29,7 +36,6 @@ class TestHttpClient:
             return resp
 
         client._client.request = fake_request
-        client._call_count = lambda: call_count  # expose for assertions
         return client
 
     def test_200_returns_json(self):
@@ -70,7 +76,6 @@ class TestHttpClient:
         client = self._make_client([FakeResponse(200, {})], api_key="test-key")
 
         captured_params = {}
-        original_request = client._client.request
 
         def capture_request(method, url, params=None):
             captured_params.update(params or {})
