@@ -1,6 +1,6 @@
 [project]
 name = "pyopenalex"
-version = "0.3.1"
+version = "0.3.2"
 description = "A Pydantic-powered Python client for the OpenAlex API"
 readme = "README.md"
 license = "MIT"
