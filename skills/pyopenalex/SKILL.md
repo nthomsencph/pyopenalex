@@ -51,6 +51,18 @@ works = client.works.get(["W2741809807", "W2100837269"])
 work = client.works.random()
 ```
 
+## Finding Works by Name
+
+Two-step ID resolution handled automatically:
+
+```python
+client.works.by_author("Yann LeCun").sort("cited_by_count", desc=True).get(10)
+client.works.by_institution("MIT").filter(publication_year=2024).get(10)
+client.works.by_source("Nature").filter(publication_year=2024).count()
+client.works.by_topic("machine learning").get(10)
+client.works.by_funder("NIH").filter(is_oa=True).get(10)
+```
+
 ## Fetching Results
 
 ```python
@@ -176,11 +188,16 @@ print(f"Authors: {', '.join(work.authors)}")
 
 ## Two-Step ID Resolution Pattern
 
+IMPORTANT: Never filter by entity names directly. Use `by_*` methods or resolve to IDs first.
+
 ```python
 # WRONG: filtering by name
 client.works.filter(author_name="Einstein")  # Will fail
 
-# CORRECT: resolve to ID first, then filter
+# BEST: use convenience methods
+client.works.by_author("Einstein").get(10)
+
+# ALSO CORRECT: manual two-step
 authors = client.authors.search("Einstein").get(1)
 author_id = authors.results[0].id
 works = client.works.filter(authorships={"author": {"id": author_id}}).get(10)

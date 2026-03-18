@@ -29,7 +29,7 @@ with OpenAlex(api_key="...") as client:
 
 - [query.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/query.py): Immutable QueryBuilder with .get(n), .get(all=True), filter, search, sort, limit, and cursor iteration
 - [expressions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/expressions.py): Filter expressions: gt(), lt(), ne(), or_(), between()
-- [endpoints.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/endpoints.py): Typed Endpoint[T] with get, batch get, random, autocomplete, and delegation to QueryBuilder
+- [endpoints.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/endpoints.py): Typed Endpoint[T] with get, batch get, random, autocomplete, by_author/by_institution/by_source/by_topic/by_funder, and delegation to QueryBuilder
 
 ## Entity Models and Rendering
 
@@ -48,4 +48,5 @@ with OpenAlex(api_key="...") as client:
 
 - [exceptions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/exceptions.py): NotFoundError, RateLimitError, APIError
 - [models/autocomplete.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/autocomplete.py): AutocompleteResult model
+- [examples/quickstart.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/examples/quickstart.py): Runnable example showcasing all features
 - [pyproject.toml](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyproject.toml): Package metadata and dependencies

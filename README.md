@@ -111,6 +111,27 @@ works = client.works.get(["W2741809807", "W2100837269", "W1775749144"])
 work = client.works.random()
 ```
 
+## Finding Works by Name
+
+Look up works by author, institution, source, topic, or funder name. PyOpenAlex handles the two-step ID resolution automatically:
+
+```python
+# By author
+client.works.by_author("Yann LeCun").sort("cited_by_count", desc=True).get(10)
+
+# By institution
+client.works.by_institution("MIT").filter(publication_year=2024).get(10)
+
+# By journal
+client.works.by_source("Nature").filter(publication_year=2024).count()
+
+# By topic
+client.works.by_topic("machine learning").get(10)
+
+# By funder
+client.works.by_funder("NIH").filter(is_oa=True).get(10)
+```
+
 ## Filtering
 
 Chain `.filter()` calls to narrow results. Multiple filters combine with AND:
@@ -328,6 +349,10 @@ client = OpenAlex(api_key="your-key")
 # 2. Environment variable
 # export OPENALEX_API_KEY=your-key
 client = OpenAlex()
+
+# 3. .env file (loaded automatically)
+# OPENALEX_API_KEY=your-key
+client = OpenAlex()
 ```
 
 Get a free API key at [openalex.org/settings/api](https://openalex.org/settings/api).
@@ -417,6 +442,10 @@ OpenAlex stores abstracts as inverted indexes. PyOpenAlex reconstructs them for 
 work = client.works.get("W2741809807")
 print(work.abstract)  # full abstract text, or None if unavailable
 ```
+
+## Examples
+
+See [`examples/quickstart.py`](examples/quickstart.py) for a runnable script showcasing all features.
 
 ## License
 
