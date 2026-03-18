@@ -58,7 +58,13 @@ class HttpClient:
         if response.status_code == 404:
             raise NotFoundError(f"Not found: {path}")
         if response.status_code == 429:
-            raise _Retryable(RateLimitError("Rate limit exceeded"))
+            msg = "Rate limit exceeded."
+            if not params.get("api_key"):
+                msg += (
+                    " No API key set. Get a free key at https://openalex.org/settings/api"
+                    " and pass it via OpenAlex(api_key=...) or set OPENALEX_API_KEY."
+                )
+            raise _Retryable(RateLimitError(msg))
         if response.status_code >= 500:
             raise _Retryable(APIError(response.status_code, response.text))
 
