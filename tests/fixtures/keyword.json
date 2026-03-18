@@ -1,0 +1,10 @@
+{
+  "id": "https://openalex.org/keywords/machine-learning",
+  "display_name": "Machine learning",
+  "relevance_score": 255252.89,
+  "works_count": 2040126,
+  "cited_by_count": 45327401,
+  "works_api_url": "https://api.openalex.org/works?filter=keywords.id:keywords/machine-learning",
+  "updated_date": "2026-03-18T04:02:20",
+  "created_date": "2022-04-12T19:38:12"
+}

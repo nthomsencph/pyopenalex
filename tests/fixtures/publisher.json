@@ -1,0 +1,119 @@
+{
+  "id": "https://openalex.org/P4310319965",
+  "display_name": "Springer Nature",
+  "alternate_titles": [
+    "\u30a8\u30a4\u30d7\u30ec\u30b9",
+    "Springer Nature Group",
+    "\u65bd\u666e\u6797\u683c-\u81ea\u7136\u51fa\u7248\u96c6\u56e2"
+  ],
+  "hierarchy_level": 0,
+  "parent_publisher": null,
+  "lineage": [
+    "https://openalex.org/P4310319965"
+  ],
+  "country_codes": [
+    "DE"
+  ],
+  "homepage_url": "https://www.springernature.com",
+  "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Springer Nature Logo.svg",
+  "image_thumbnail_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Springer Nature Logo.svg&width=300",
+  "works_count": 2760399,
+  "cited_by_count": 38507567,
+  "summary_stats": {
+    "2yr_mean_citedness": 2.2163815635785027,
+    "h_index": 1165,
+    "i10_index": 619135
+  },
+  "ids": {
+    "openalex": "https://openalex.org/P4310319965",
+    "ror": "https://ror.org/0117jxy09",
+    "wikidata": "https://www.wikidata.org/entity/Q21096327"
+  },
+  "counts_by_year": [
+    {
+      "year": 2026,
+      "works_count": 24437,
+      "cited_by_count": 901
+    },
+    {
+      "year": 2025,
+      "works_count": 106120,
+      "cited_by_count": 119713
+    },
+    {
+      "year": 2024,
+      "works_count": 96320,
+      "cited_by_count": 382232
+    },
+    {
+      "year": 2023,
+      "works_count": 86485,
+      "cited_by_count": 601837
+    },
+    {
+      "year": 2022,
+      "works_count": 88559,
+      "cited_by_count": 835270
+    },
+    {
+      "year": 2021,
+      "works_count": 97035,
+      "cited_by_count": 1155367
+    },
+    {
+      "year": 2020,
+      "works_count": 99174,
+      "cited_by_count": 1405079
+    },
+    {
+      "year": 2019,
+      "works_count": 93465,
+      "cited_by_count": 1261213
+    },
+    {
+      "year": 2018,
+      "works_count": 81303,
+      "cited_by_count": 1278729
+    },
+    {
+      "year": 2017,
+      "works_count": 71280,
+      "cited_by_count": 1213156
+    },
+    {
+      "year": 2016,
+      "works_count": 68524,
+      "cited_by_count": 1182572
+    },
+    {
+      "year": 2015,
+      "works_count": 65962,
+      "cited_by_count": 1132958
+    },
+    {
+      "year": 2014,
+      "works_count": 67869,
+      "cited_by_count": 1252334
+    }
+  ],
+  "roles": [
+    {
+      "role": "institution",
+      "id": "https://openalex.org/I1313014049",
+      "works_count": 17850
+    },
+    {
+      "role": "institution",
+      "id": "https://openalex.org/I4210131128",
+      "works_count": 58
+    },
+    {
+      "role": "publisher",
+      "id": "https://openalex.org/P4310319965",
+      "works_count": 2760399
+    }
+  ],
+  "sources_api_url": "https://api.openalex.org/sources?data-version=2&filter=host_organization.id:P4310319965",
+  "updated_date": "2026-03-18T04:01:09",
+  "created_date": "2023-01-01T00:00:00"
+}

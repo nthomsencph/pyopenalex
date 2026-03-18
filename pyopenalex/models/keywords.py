@@ -1,0 +1,13 @@
+from __future__ import annotations
+
+from pyopenalex.models.base import OpenAlexModel
+
+
+class Keyword(OpenAlexModel):
+    id: str
+    display_name: str
+    works_count: int | None = None
+    cited_by_count: int | None = None
+    works_api_url: str | None = None
+    created_date: str | None = None
+    updated_date: str | None = None

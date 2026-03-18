@@ -1,0 +1,76 @@
+{
+  "id": "https://openalex.org/T10001",
+  "display_name": "Geological and Geochemical Analysis",
+  "description": "This cluster of papers focuses on the tectonic evolution and geochronological analysis of orogenic processes, with a particular emphasis on zircon geochemistry, isotopic composition, and thermodynamic modeling. It covers topics such as subduction zones, mantle evolution, plate tectonics, and the growth of continental crust.",
+  "keywords": [
+    "Zircon",
+    "Geochronology",
+    "Tectonics",
+    "Granitic Rocks",
+    "Isotopic Composition",
+    "Subduction Zones",
+    "Mantle Evolution",
+    "Plate Tectonics",
+    "Thermodynamic Modeling",
+    "Continental Growth"
+  ],
+  "ids": {
+    "openalex": "https://openalex.org/T10001",
+    "wikipedia": "https://en.wikipedia.org/wiki/Geochronology"
+  },
+  "subfield": {
+    "id": "https://openalex.org/subfields/1908",
+    "display_name": "Geophysics"
+  },
+  "field": {
+    "id": "https://openalex.org/fields/19",
+    "display_name": "Earth and Planetary Sciences"
+  },
+  "domain": {
+    "id": "https://openalex.org/domains/3",
+    "display_name": "Physical Sciences"
+  },
+  "siblings": [
+    {
+      "id": "https://openalex.org/T10110",
+      "display_name": "earthquake and tectonic studies"
+    },
+    {
+      "id": "https://openalex.org/T10271",
+      "display_name": "Seismic Imaging and Inversion Techniques"
+    },
+    {
+      "id": "https://openalex.org/T10413",
+      "display_name": "High-pressure geophysics and materials"
+    },
+    {
+      "id": "https://openalex.org/T10572",
+      "display_name": "Geophysical and Geoelectrical Methods"
+    },
+    {
+      "id": "https://openalex.org/T11757",
+      "display_name": "Seismic Waves and Analysis"
+    },
+    {
+      "id": "https://openalex.org/T12424",
+      "display_name": "Earthquake Detection and Analysis"
+    },
+    {
+      "id": "https://openalex.org/T12821",
+      "display_name": "Geological Formations and Processes Exploration"
+    },
+    {
+      "id": "https://openalex.org/T13205",
+      "display_name": "Geological and Geophysical Studies Worldwide"
+    },
+    {
+      "id": "https://openalex.org/T13404",
+      "display_name": "Geological and Tectonic Studies in Latin America"
+    }
+  ],
+  "works_count": 375307,
+  "cited_by_count": 8154143,
+  "works_api_url": "https://api.openalex.org/works?filter=topics.id:T10001",
+  "updated_date": "2026-03-18T03:01:25",
+  "created_date": "2024-01-23T15:27:04"
+}

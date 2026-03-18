@@ -1,0 +1,121 @@
+{
+  "meta": {
+    "count": 30,
+    "db_response_time_ms": 49,
+    "page": 1,
+    "per_page": 10,
+    "cost_usd": 0.0001
+  },
+  "results": [
+    {
+      "id": "https://openalex.org/I136199984",
+      "short_id": "institutions/I136199984",
+      "display_name": "Harvard University",
+      "hint": "Cambridge, USA",
+      "cited_by_count": 139013518,
+      "works_count": 687820,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/03vek6s52",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210141641",
+      "short_id": "institutions/I4210141641",
+      "display_name": "IIT@Harvard",
+      "hint": "Cambridge, USA",
+      "cited_by_count": 17146,
+      "works_count": 1639,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/044hpwe09",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I2801851002",
+      "short_id": "institutions/I2801851002",
+      "display_name": "Harvard University Press",
+      "hint": "Cambridge, USA",
+      "cited_by_count": 14842680,
+      "works_count": 197848,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/006v7bf86",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210106258",
+      "short_id": "institutions/I4210106258",
+      "display_name": "Harvard College Observatory",
+      "hint": "Cambridge, USA",
+      "cited_by_count": 116492,
+      "works_count": 3316,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/01mcvy510",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210086415",
+      "short_id": "institutions/I4210086415",
+      "display_name": "Harvard NeuroDiscovery Center",
+      "hint": "Boston, USA",
+      "cited_by_count": 62708,
+      "works_count": 233,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/000cs1t14",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210140349",
+      "short_id": "institutions/I4210140349",
+      "display_name": "Harvard Eye Associates",
+      "hint": "Laguna Hills, USA",
+      "cited_by_count": 1596,
+      "works_count": 62,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/03d9hbe08",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210167392",
+      "short_id": "institutions/I4210167392",
+      "display_name": "Harvard Bioscience (Germany)",
+      "hint": "Reutlingen, Germany",
+      "cited_by_count": 31,
+      "works_count": 58,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/05x88b790",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210108195",
+      "short_id": "institutions/I4210108195",
+      "display_name": "Harvard-Yenching Institute",
+      "hint": "Cambridge, USA",
+      "cited_by_count": 289,
+      "works_count": 43,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/01kv2k333",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210149198",
+      "short_id": "institutions/I4210149198",
+      "display_name": "Harvard Travellers Club",
+      "hint": "Canton, USA",
+      "cited_by_count": 49,
+      "works_count": 16,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/05xph5761",
+      "filter_key": "authorships.institutions.lineage"
+    },
+    {
+      "id": "https://openalex.org/I4210156643",
+      "short_id": "institutions/I4210156643",
+      "display_name": "Harvard Global Health Institute",
+      "hint": "Cambridge, USA",
+      "cited_by_count": 839380,
+      "works_count": 9795,
+      "entity_type": "institution",
+      "external_id": "https://ror.org/055avk103",
+      "filter_key": "authorships.institutions.lineage"
+    }
+  ]
+}
