@@ -11,6 +11,8 @@ wheels/
 
 # IDE / tools
 .claude/
+.agent/
 .agents/
 .pytest_cache/
 .env
+skills-lock.json
