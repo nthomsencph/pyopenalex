@@ -1,10 +1,10 @@
 [project]
 name = "pyopenalex"
-version = "0.3.0"
+version = "0.3.1"
 description = "A Pydantic-powered Python client for the OpenAlex API"
 readme = "README.md"
 license = "MIT"
-requires-python = ">=3.13"
+requires-python = ">=3.10"
 authors = [
     { name = "Nicolai B. Thomsen", email = "nbth.msc@cbs.dk" },
 ]
@@ -14,6 +14,9 @@ classifiers = [
     "Intended Audience :: Science/Research",
     "License :: OSI Approved :: MIT License",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Typing :: Typed",
 ]
