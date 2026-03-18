@@ -1,0 +1,50 @@
+# PyOpenAlex
+
+> A Pydantic-powered Python client for the OpenAlex API. Provides typed access to 270M+ scholarly works, 90M+ authors, and 100K+ sources with a chainable query builder, filter expressions, and automatic cursor pagination.
+
+PyOpenAlex wraps the OpenAlex API (https://api.openalex.org) with Pydantic models for all entity types. The design follows FastAPI and Pydantic patterns: immutable query builders, typed models, filter expressions as descriptor functions, and environment-based configuration via pydantic-settings.
+
+Install with `pip install pyopenalex`. Requires Python 3.13+.
+
+```python
+from pyopenalex import OpenAlex, gt
+
+with OpenAlex(api_key="...") as client:
+    for work in client.works.filter(cited_by_count=gt(1000), publication_year=2024).limit(10):
+        print(f"{work.title} ({work.cited_by_count} citations)")
+```
+
+## Core
+
+- [README](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/README.md): Full usage guide with examples for all features
+- [PyPI](https://pypi.org/project/pyopenalex/): Package page
+
+## Client and Configuration
+
+- [client.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/client.py): OpenAlex client class with endpoint registry and context manager support
+- [config.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/config.py): Settings via pydantic-settings, configurable through OPENALEX_ env vars
+- [_http.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/_http.py): HTTP client with tenacity retry and exponential backoff
+
+## Query Building
+
+- [query.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/query.py): Immutable QueryBuilder with filter, search, sort, pagination, group_by, and cursor iteration
+- [expressions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/expressions.py): Filter expressions: gt(), lt(), ne(), or_(), between()
+- [endpoints.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/endpoints.py): Typed Endpoint[T] with get, batch get, random, autocomplete, and delegation to QueryBuilder
+
+## Entity Models
+
+- [models/base.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/base.py): Base model, Meta, dehydrated entities, shared types
+- [models/works.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/works.py): Work, Location, OpenAccess, Authorship, abstract reconstruction
+- [models/authors.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/authors.py): Author model
+- [models/sources.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/sources.py): Source model
+- [models/institutions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/institutions.py): Institution model
+- [models/topics.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/topics.py): Topic model
+- [models/keywords.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/keywords.py): Keyword model
+- [models/publishers.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/publishers.py): Publisher model
+- [models/funders.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/funders.py): Funder model
+
+## Optional
+
+- [exceptions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/exceptions.py): NotFoundError, RateLimitError, APIError
+- [models/autocomplete.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/autocomplete.py): AutocompleteResult model
+- [pyproject.toml](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyproject.toml): Package metadata and dependencies
