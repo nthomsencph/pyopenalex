@@ -13,7 +13,7 @@ from pyopenalex import OpenAlex, gt
 
 with OpenAlex() as client:
     for work in client.works.filter(cited_by_count=gt(1000), publication_year=2024).limit(10):
-        print(f"{work.title} ({work.cited_by_count} citations)")
+        print(work.to_markdown(limit_abstract=150))
 ```
 
 ## Installation
@@ -38,9 +38,9 @@ print(work.doi)
 print(work.abstract)  # reconstructed from inverted index
 
 # Search for authors
-results = client.authors.search("Einstein").per_page(5).get()
+results = client.authors.search("Einstein").get(5)
 for author in results.results:
-    print(f"{author.display_name}: {author.works_count} works")
+    print(f"{author.name}: {author.works_count} works")
 ```
 
 ## Entities
@@ -58,20 +58,25 @@ client.publishers     # Publishing organizations
 client.funders        # Funding agencies
 ```
 
-Every entity is a Pydantic model with fully typed fields:
+Every entity is a Pydantic model with fully typed fields and convenience aliases:
 
 ```python
 work = client.works.get("W2741809807")
 
 work.title                              # str | None
-work.publication_year                   # int | None
-work.cited_by_count                     # int | None
+work.year                               # alias for publication_year
+work.citations                          # alias for cited_by_count
+work.authors                            # list of author name strings
+work.name                               # alias for display_name
+work.abstract                           # reconstructed from inverted index
 work.open_access.is_oa                  # bool
 work.open_access.oa_status              # str (gold, green, hybrid, bronze, diamond, closed)
 work.authorships[0].author.display_name # str | None
 work.authorships[0].institutions        # list[DehydratedInstitution]
 work.primary_location.source            # DehydratedSource | None
 ```
+
+The `.name` and `.citations` aliases are available on all entity types.
 
 ## Looking Up Entities
 
@@ -115,8 +120,7 @@ results = (
     client.works
     .filter(publication_year=2024, is_oa=True)
     .sort("cited_by_count", desc=True)
-    .per_page(100)
-    .get()
+    .get(10)
 )
 ```
 
@@ -206,16 +210,27 @@ Request only the fields you need to reduce response size:
 results = client.works.select("id", "title", "doi", "cited_by_count").get()
 ```
 
-## Pagination
+## Fetching Results
 
-### Page-Based
+### Get a specific number of results
+
+Pass a count to `.get()` and PyOpenAlex handles pagination internally:
 
 ```python
-page1 = client.works.filter(publication_year=2024).page(1).per_page(100).get()
-page2 = client.works.filter(publication_year=2024).page(2).per_page(100).get()
+# Get exactly 10 results
+results = client.works.search("CRISPR").get(10)
+
+# Get 250 results (auto-paginates across multiple API calls)
+results = client.works.filter(publication_year=2024).get(250)
+
+# Get all matching results
+results = client.works.filter(publication_year=2024, type="dataset").get(all=True)
+
+# Default: single page (25 results)
+results = client.works.search("CRISPR").get()
 ```
 
-### Cursor-Based (Automatic)
+### Iteration
 
 Iterate over any query and PyOpenAlex handles cursor pagination automatically:
 
@@ -229,6 +244,15 @@ Use `.limit()` to cap the total number of results:
 ```python
 for work in client.works.filter(publication_year=2024).limit(500):
     process(work)
+```
+
+### Manual page control
+
+For cases where you need direct control over pagination:
+
+```python
+page1 = client.works.filter(publication_year=2024).page(1).per_page(100).get()
+page2 = client.works.filter(publication_year=2024).page(2).per_page(100).get()
 ```
 
 ## Counting
@@ -274,8 +298,8 @@ The query builder is immutable. Each method returns a new instance, so you can s
 ```python
 base = client.works.filter(publication_year=2024, is_oa=True)
 
-most_cited = base.sort("cited_by_count", desc=True).per_page(10).get()
-recent = base.sort("publication_date", desc=True).per_page(10).get()
+most_cited = base.sort("cited_by_count", desc=True).get(10)
+recent = base.sort("publication_date", desc=True).get(10)
 count = base.count()
 ```
 
@@ -334,6 +358,36 @@ The client can be used as a context manager to ensure the HTTP connection is clo
 ```python
 with OpenAlex() as client:
     work = client.works.get("W2741809807")
+```
+
+## Markdown Rendering
+
+All entities can render themselves as clean markdown, useful for LLM tool responses and reports:
+
+```python
+work = client.works.get("W2741809807")
+print(work.to_markdown())
+```
+
+Output:
+
+```markdown
+## The state of OA: a large-scale analysis of the prevalence and impact of Open Access articles (2018)
+
+- **DOI:** https://doi.org/10.7717/peerj.4375
+- **Type:** book-chapter
+- **Citations:** 1,163
+- **Open Access:** Yes (gold)
+- **Source:** PeerJ
+- **Authors:** Heather Piwowar, Jason Priem, Vincent Lariviere, ...
+
+Despite growing interest in Open Access (OA) to scholarly literature...
+```
+
+Use `limit_abstract` to truncate long abstracts:
+
+```python
+work.to_markdown(limit_abstract=150)
 ```
 
 ## Error Handling
