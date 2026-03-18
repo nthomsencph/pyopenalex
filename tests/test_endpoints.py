@@ -3,8 +3,7 @@ import pytest
 from pyopenalex.endpoints import Endpoint
 from pyopenalex.models.autocomplete import AutocompleteResult
 from pyopenalex.models.works import Work
-
-from tests.conftest import FakeHttpClient, load_fixture
+from tests.conftest import load_fixture
 
 
 @pytest.fixture

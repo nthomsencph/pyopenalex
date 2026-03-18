@@ -1,6 +1,5 @@
 from pyopenalex.expressions import between, gt, lt, ne, or_
 from pyopenalex.query import QueryBuilder, _flatten_filters
-
 from tests.conftest import FakeHttpClient, load_fixture
 
 
@@ -77,15 +76,11 @@ class TestNestedDictFilters:
         assert pairs == [("authorships.author.id", "A123")]
 
     def test_flatten_two_levels(self):
-        pairs = _flatten_filters(
-            "authorships", {"institutions": {"country_code": "US"}}
-        )
+        pairs = _flatten_filters("authorships", {"institutions": {"country_code": "US"}})
         assert pairs == [("authorships.institutions.country_code", "US")]
 
     def test_nested_filter_in_query(self):
-        qb = make_qb().filter(
-            authorships={"institutions": {"id": "I136199984"}}
-        )
+        qb = make_qb().filter(authorships={"institutions": {"id": "I136199984"}})
         params = qb._build_params()
         assert params["filter"] == "authorships.institutions.id:I136199984"
 
@@ -182,7 +177,9 @@ class TestParamBuilding:
 class TestGetAndCount:
     def test_get_parses_response(self, fake_http):
         fake_http.enqueue(load_fixture("works_list"))
-        qb = QueryBuilder(fake_http, "/works", __import__("pyopenalex.models.works", fromlist=["Work"]).Work)
+        from pyopenalex.models.works import Work
+
+        qb = QueryBuilder(fake_http, "/works", Work)
         result = qb.filter(publication_year=2024).get()
 
         assert result.meta.count > 0
@@ -191,7 +188,9 @@ class TestGetAndCount:
 
     def test_count_uses_per_page_1(self, fake_http):
         fake_http.enqueue(load_fixture("works_list"))
-        qb = QueryBuilder(fake_http, "/works", __import__("pyopenalex.models.works", fromlist=["Work"]).Work)
+        from pyopenalex.models.works import Work
+
+        qb = QueryBuilder(fake_http, "/works", Work)
         count = qb.filter(publication_year=2024).count()
 
         assert count > 0
