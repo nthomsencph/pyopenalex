@@ -11,6 +11,11 @@ from pyopenalex.models.base import (
 
 
 class Funder(OpenAlexModel):
+    """A funding agency.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     display_name: str
     alternate_titles: list[str] = []

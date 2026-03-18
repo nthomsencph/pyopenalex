@@ -16,6 +16,11 @@ class AuthorAffiliation(OpenAlexModel):
 
 
 class Author(OpenAlexModel):
+    """A researcher profile with disambiguated identity.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     orcid: str | None = None
     display_name: str

@@ -21,6 +21,11 @@ class Geo(OpenAlexModel):
 
 
 class Institution(OpenAlexModel):
+    """A university, research organization, or other institution.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     ror: str | None = None
     display_name: str

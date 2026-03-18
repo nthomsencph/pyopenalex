@@ -82,6 +82,11 @@ class HasContent(OpenAlexModel):
 
 
 class Work(OpenAlexModel):
+    """A scholarly work: article, book, dataset, preprint, etc.
+
+    Convenience aliases: ``.name``, ``.year``, ``.citations``, ``.authors``, ``.abstract``.
+    """
+
     id: str
     doi: str | None = None
     title: str | None = None

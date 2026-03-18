@@ -6,6 +6,11 @@ from pyopenalex.models.base import DehydratedEntity, OpenAlexModel
 
 
 class Topic(OpenAlexModel):
+    """A subject classification in a 4-level hierarchy: domain > field > subfield > topic.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     display_name: str
     description: str | None = None

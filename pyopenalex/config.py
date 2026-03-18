@@ -4,6 +4,12 @@ from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
+    """Configuration for the OpenAlex client.
+
+    All fields can be set via environment variables with the ``OPENALEX_`` prefix
+    (e.g. ``OPENALEX_API_KEY``, ``OPENALEX_TIMEOUT``).
+    """
+
     model_config = {"env_prefix": "OPENALEX_"}
 
     api_key: str | None = None

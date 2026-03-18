@@ -14,6 +14,23 @@ from pyopenalex.models.works import Work
 
 
 class OpenAlex:
+    """Client for the OpenAlex API.
+
+    Provides typed access to scholarly works, authors, sources, institutions,
+    topics, keywords, publishers, and funders.
+
+    Args:
+        api_key: OpenAlex API key. Falls back to ``OPENALEX_API_KEY`` env var.
+        base_url: API base URL. Defaults to ``https://api.openalex.org``.
+        **kwargs: Additional settings (``timeout``, ``max_retries``).
+
+    Example::
+
+        with OpenAlex(api_key="...") as client:
+            work = client.works.get("W2741809807")
+            print(work.title)
+    """
+
     def __init__(
         self,
         api_key: str | None = None,
@@ -27,16 +44,34 @@ class OpenAlex:
         )
         self._http = HttpClient(settings)
 
-        self.works = Endpoint(self._http, "/works", Work)
-        self.authors = Endpoint(self._http, "/authors", Author)
-        self.sources = Endpoint(self._http, "/sources", Source)
-        self.institutions = Endpoint(self._http, "/institutions", Institution)
-        self.topics = Endpoint(self._http, "/topics", Topic)
-        self.keywords = Endpoint(self._http, "/keywords", Keyword)
-        self.publishers = Endpoint(self._http, "/publishers", Publisher)
-        self.funders = Endpoint(self._http, "/funders", Funder)
+        self.works: Endpoint[Work] = Endpoint(self._http, "/works", Work)
+        """Scholarly documents: articles, books, datasets, preprints."""
+
+        self.authors: Endpoint[Author] = Endpoint(self._http, "/authors", Author)
+        """Researcher profiles with disambiguated identities."""
+
+        self.sources: Endpoint[Source] = Endpoint(self._http, "/sources", Source)
+        """Journals, repositories, and conferences."""
+
+        self.institutions: Endpoint[Institution] = Endpoint(
+            self._http, "/institutions", Institution
+        )
+        """Universities and research organizations."""
+
+        self.topics: Endpoint[Topic] = Endpoint(self._http, "/topics", Topic)
+        """Subject classifications in a 4-level hierarchy."""
+
+        self.keywords: Endpoint[Keyword] = Endpoint(self._http, "/keywords", Keyword)
+        """Extracted keywords from scholarly works."""
+
+        self.publishers: Endpoint[Publisher] = Endpoint(self._http, "/publishers", Publisher)
+        """Publishing organizations."""
+
+        self.funders: Endpoint[Funder] = Endpoint(self._http, "/funders", Funder)
+        """Funding agencies."""
 
     def close(self) -> None:
+        """Close the underlying HTTP connection."""
         self._http.close()
 
     def __enter__(self) -> OpenAlex:

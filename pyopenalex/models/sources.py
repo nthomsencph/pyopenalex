@@ -15,6 +15,11 @@ class ApcPrice(OpenAlexModel):
 
 
 class Source(OpenAlexModel):
+    """A journal, repository, or conference.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     issn_l: str | None = None
     issn: list[str] | None = None

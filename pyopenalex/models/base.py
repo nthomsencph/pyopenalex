@@ -4,9 +4,20 @@ from pydantic import BaseModel, ConfigDict
 
 
 class OpenAlexModel(BaseModel):
+    """Base class for all OpenAlex entity models."""
+
     model_config = ConfigDict(extra="allow", populate_by_name=True)
 
     def to_markdown(self, limit_abstract: int | None = None) -> str:
+        """Render this entity as clean markdown.
+
+        Args:
+            limit_abstract: Truncate abstracts/descriptions to this many
+                characters. ``None`` (default) includes the full text.
+
+        Returns:
+            A markdown string with heading, metadata, and optional abstract.
+        """
         from pyopenalex.markdown import to_markdown
 
         return to_markdown(self, limit_abstract=limit_abstract)

@@ -13,9 +13,16 @@ T = TypeVar("T", bound=OpenAlexModel)
 
 
 class ListResponse(OpenAlexModel, Generic[T]):
+    """Response from a list query, containing metadata, results, and group-by aggregations."""
+
     meta: Meta
+    """Query metadata: total count, page info, cost."""
+
     results: list[T]
+    """The list of entity objects returned."""
+
     group_by: list[GroupByResult] = []
+    """Aggregation groups, populated when using ``.group_by()``."""
 
 
 def _flatten_filters(prefix: str, value: Any) -> list[tuple[str, str]]:
@@ -44,6 +51,18 @@ def _serialize_value(value: Any) -> str:
 
 
 class QueryBuilder(Generic[T]):
+    """Immutable, chainable query builder for OpenAlex API requests.
+
+    Every method returns a new ``QueryBuilder`` instance, so you can safely
+    branch from a base query without mutation.
+
+    Example::
+
+        base = client.works.filter(publication_year=2024)
+        top = base.sort("cited_by_count", desc=True).get(10)
+        count = base.count()
+    """
+
     def __init__(
         self,
         http: HttpClient,
@@ -65,6 +84,7 @@ class QueryBuilder(Generic[T]):
         return qb
 
     def filter(self, **kwargs: Any) -> QueryBuilder[T]:
+        """Add filters. Supports values, expressions, and nested dicts."""
         qb = self._clone()
         for key, value in kwargs.items():
             if isinstance(value, dict):
@@ -75,12 +95,14 @@ class QueryBuilder(Generic[T]):
         return qb
 
     def filter_raw(self, raw: str) -> QueryBuilder[T]:
+        """Set the filter parameter to a raw string, bypassing expression parsing."""
         qb = self._clone()
         qb._params["filter"] = raw
         qb._filters.clear()
         return qb
 
     def search(self, query: str) -> QueryBuilder[T]:
+        """Full-text search. Results are sorted by relevance by default."""
         qb = self._clone()
         qb._params["search"] = query
         return qb
@@ -93,27 +115,32 @@ class QueryBuilder(Generic[T]):
         return qb
 
     def sort(self, field: str, desc: bool = False) -> QueryBuilder[T]:
+        """Sort results. Set ``desc=True`` for descending order."""
         qb = self._clone()
         suffix = ":desc" if desc else ""
         qb._params["sort"] = f"{field}{suffix}"
         return qb
 
     def per_page(self, n: int) -> QueryBuilder[T]:
+        """Set results per page (1-100). Prefer ``.get(n)`` for simpler usage."""
         qb = self._clone()
         qb._params["per_page"] = n
         return qb
 
     def page(self, n: int) -> QueryBuilder[T]:
+        """Set the page number for manual page-based pagination."""
         qb = self._clone()
         qb._params["page"] = n
         return qb
 
     def select(self, *fields: str) -> QueryBuilder[T]:
+        """Limit response to specific top-level fields to reduce payload size."""
         qb = self._clone()
         qb._params["select"] = ",".join(fields)
         return qb
 
     def sample(self, n: int, seed: int | None = None) -> QueryBuilder[T]:
+        """Return a random sample. Use ``seed`` for reproducibility."""
         qb = self._clone()
         qb._params["sample"] = n
         if seed is not None:
@@ -121,6 +148,7 @@ class QueryBuilder(Generic[T]):
         return qb
 
     def group_by(self, field: str) -> QueryBuilder[T]:
+        """Aggregate results by a field. Access groups via ``response.group_by``."""
         qb = self._clone()
         qb._params["group_by"] = field
         return qb
@@ -179,6 +207,7 @@ class QueryBuilder(Generic[T]):
         )
 
     def count(self) -> int:
+        """Return the total number of matching entities without fetching them."""
         qb = self.per_page(1).select("id")
         return qb.get().meta.count
 

@@ -11,6 +11,11 @@ from pyopenalex.models.base import (
 
 
 class Publisher(OpenAlexModel):
+    """A publishing organization.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     display_name: str
     alternate_titles: list[str] = []

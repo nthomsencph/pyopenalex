@@ -4,6 +4,11 @@ from pyopenalex.models.base import OpenAlexModel
 
 
 class Keyword(OpenAlexModel):
+    """An extracted keyword from scholarly works.
+
+    Convenience aliases: ``.name``, ``.citations``.
+    """
+
     id: str
     display_name: str
     works_count: int | None = None
