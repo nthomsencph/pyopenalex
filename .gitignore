@@ -11,5 +11,6 @@ wheels/
 
 # IDE / tools
 .claude/
+.agents/
 .pytest_cache/
 .env
