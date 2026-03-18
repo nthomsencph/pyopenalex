@@ -1,0 +1,692 @@
+{
+  "id": "https://openalex.org/F4320332161",
+  "display_name": "National Institutes of Health",
+  "alternate_titles": [
+    "US National Institutes of Health",
+    "Institutos Nacionales de la Salud",
+    "NIH"
+  ],
+  "country_code": "US",
+  "description": "US government medical research agency",
+  "homepage_url": "http://www.nih.gov",
+  "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NIH 2013 logo vertical.svg",
+  "image_thumbnail_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/NIH 2013 logo vertical.svg&width=300",
+  "awards_count": 2547669,
+  "works_count": 1434400,
+  "cited_by_count": 91098092,
+  "summary_stats": {
+    "2yr_mean_citedness": 5.970054276623619,
+    "h_index": 1823,
+    "i10_index": 1008008
+  },
+  "ids": {
+    "openalex": "https://openalex.org/F4320332161",
+    "ror": "https://ror.org/01cwqze88",
+    "wikidata": "https://www.wikidata.org/entity/Q390551",
+    "crossref": "100000002",
+    "doi": "10.13039/100000002"
+  },
+  "counts_by_year": [
+    {
+      "year": 5777,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 1
+    },
+    {
+      "year": 2026,
+      "works_count": 4,
+      "oa_works_count": 4,
+      "cited_by_count": 1
+    },
+    {
+      "year": 2025,
+      "works_count": 33904,
+      "oa_works_count": 29944,
+      "cited_by_count": 75842
+    },
+    {
+      "year": 2024,
+      "works_count": 46236,
+      "oa_works_count": 42859,
+      "cited_by_count": 402626
+    },
+    {
+      "year": 2023,
+      "works_count": 70110,
+      "oa_works_count": 66750,
+      "cited_by_count": 893451
+    },
+    {
+      "year": 2022,
+      "works_count": 68313,
+      "oa_works_count": 62870,
+      "cited_by_count": 1350755
+    },
+    {
+      "year": 2021,
+      "works_count": 76358,
+      "oa_works_count": 71812,
+      "cited_by_count": 2289169
+    },
+    {
+      "year": 2020,
+      "works_count": 85253,
+      "oa_works_count": 81432,
+      "cited_by_count": 3156817
+    },
+    {
+      "year": 2019,
+      "works_count": 69913,
+      "oa_works_count": 61925,
+      "cited_by_count": 3299895
+    },
+    {
+      "year": 2018,
+      "works_count": 69722,
+      "oa_works_count": 55742,
+      "cited_by_count": 3809748
+    },
+    {
+      "year": 2017,
+      "works_count": 64736,
+      "oa_works_count": 54370,
+      "cited_by_count": 3824305
+    },
+    {
+      "year": 2016,
+      "works_count": 61234,
+      "oa_works_count": 51567,
+      "cited_by_count": 3871254
+    },
+    {
+      "year": 2015,
+      "works_count": 58472,
+      "oa_works_count": 48636,
+      "cited_by_count": 3878631
+    },
+    {
+      "year": 2014,
+      "works_count": 57067,
+      "oa_works_count": 47690,
+      "cited_by_count": 3933170
+    },
+    {
+      "year": 2013,
+      "works_count": 52059,
+      "oa_works_count": 43158,
+      "cited_by_count": 3719514
+    },
+    {
+      "year": 2012,
+      "works_count": 49769,
+      "oa_works_count": 39529,
+      "cited_by_count": 3864544
+    },
+    {
+      "year": 2011,
+      "works_count": 49326,
+      "oa_works_count": 36194,
+      "cited_by_count": 4045041
+    },
+    {
+      "year": 2010,
+      "works_count": 45947,
+      "oa_works_count": 32936,
+      "cited_by_count": 4059688
+    },
+    {
+      "year": 2009,
+      "works_count": 41214,
+      "oa_works_count": 31958,
+      "cited_by_count": 3769208
+    },
+    {
+      "year": 2008,
+      "works_count": 38046,
+      "oa_works_count": 28590,
+      "cited_by_count": 3732282
+    },
+    {
+      "year": 2007,
+      "works_count": 34108,
+      "oa_works_count": 22329,
+      "cited_by_count": 3413948
+    },
+    {
+      "year": 2006,
+      "works_count": 34185,
+      "oa_works_count": 18402,
+      "cited_by_count": 3310387
+    },
+    {
+      "year": 2005,
+      "works_count": 30303,
+      "oa_works_count": 16269,
+      "cited_by_count": 3157467
+    },
+    {
+      "year": 2004,
+      "works_count": 27010,
+      "oa_works_count": 13715,
+      "cited_by_count": 2921375
+    },
+    {
+      "year": 2003,
+      "works_count": 24206,
+      "oa_works_count": 12011,
+      "cited_by_count": 2652692
+    },
+    {
+      "year": 2002,
+      "works_count": 21850,
+      "oa_works_count": 10901,
+      "cited_by_count": 2426510
+    },
+    {
+      "year": 2001,
+      "works_count": 19242,
+      "oa_works_count": 9544,
+      "cited_by_count": 2169788
+    },
+    {
+      "year": 2000,
+      "works_count": 17487,
+      "oa_works_count": 7947,
+      "cited_by_count": 2003347
+    },
+    {
+      "year": 1999,
+      "works_count": 15470,
+      "oa_works_count": 7165,
+      "cited_by_count": 1573354
+    },
+    {
+      "year": 1998,
+      "works_count": 14318,
+      "oa_works_count": 7292,
+      "cited_by_count": 1551193
+    },
+    {
+      "year": 1997,
+      "works_count": 12593,
+      "oa_works_count": 6522,
+      "cited_by_count": 1217247
+    },
+    {
+      "year": 1996,
+      "works_count": 12148,
+      "oa_works_count": 5989,
+      "cited_by_count": 1117673
+    },
+    {
+      "year": 1995,
+      "works_count": 11012,
+      "oa_works_count": 4939,
+      "cited_by_count": 971476
+    },
+    {
+      "year": 1994,
+      "works_count": 9650,
+      "oa_works_count": 4016,
+      "cited_by_count": 856926
+    },
+    {
+      "year": 1993,
+      "works_count": 8466,
+      "oa_works_count": 3430,
+      "cited_by_count": 751382
+    },
+    {
+      "year": 1992,
+      "works_count": 8480,
+      "oa_works_count": 3311,
+      "cited_by_count": 673157
+    },
+    {
+      "year": 1991,
+      "works_count": 8151,
+      "oa_works_count": 3265,
+      "cited_by_count": 611178
+    },
+    {
+      "year": 1990,
+      "works_count": 8069,
+      "oa_works_count": 3244,
+      "cited_by_count": 633381
+    },
+    {
+      "year": 1989,
+      "works_count": 7508,
+      "oa_works_count": 2896,
+      "cited_by_count": 539622
+    },
+    {
+      "year": 1988,
+      "works_count": 7129,
+      "oa_works_count": 2774,
+      "cited_by_count": 494313
+    },
+    {
+      "year": 1987,
+      "works_count": 6234,
+      "oa_works_count": 2573,
+      "cited_by_count": 522146
+    },
+    {
+      "year": 1986,
+      "works_count": 6212,
+      "oa_works_count": 2235,
+      "cited_by_count": 436810
+    },
+    {
+      "year": 1985,
+      "works_count": 5394,
+      "oa_works_count": 2063,
+      "cited_by_count": 369997
+    },
+    {
+      "year": 1984,
+      "works_count": 5000,
+      "oa_works_count": 1803,
+      "cited_by_count": 366528
+    },
+    {
+      "year": 1983,
+      "works_count": 4476,
+      "oa_works_count": 1560,
+      "cited_by_count": 292098
+    },
+    {
+      "year": 1982,
+      "works_count": 4293,
+      "oa_works_count": 1366,
+      "cited_by_count": 244155
+    },
+    {
+      "year": 1981,
+      "works_count": 3958,
+      "oa_works_count": 1328,
+      "cited_by_count": 238544
+    },
+    {
+      "year": 1980,
+      "works_count": 3384,
+      "oa_works_count": 1116,
+      "cited_by_count": 208391
+    },
+    {
+      "year": 1979,
+      "works_count": 2911,
+      "oa_works_count": 1007,
+      "cited_by_count": 170783
+    },
+    {
+      "year": 1978,
+      "works_count": 2621,
+      "oa_works_count": 988,
+      "cited_by_count": 143484
+    },
+    {
+      "year": 1977,
+      "works_count": 2208,
+      "oa_works_count": 839,
+      "cited_by_count": 126435
+    },
+    {
+      "year": 1976,
+      "works_count": 2006,
+      "oa_works_count": 768,
+      "cited_by_count": 112515
+    },
+    {
+      "year": 1975,
+      "works_count": 1808,
+      "oa_works_count": 643,
+      "cited_by_count": 103803
+    },
+    {
+      "year": 1974,
+      "works_count": 1742,
+      "oa_works_count": 804,
+      "cited_by_count": 102307
+    },
+    {
+      "year": 1973,
+      "works_count": 1604,
+      "oa_works_count": 685,
+      "cited_by_count": 98225
+    },
+    {
+      "year": 1972,
+      "works_count": 1407,
+      "oa_works_count": 536,
+      "cited_by_count": 69378
+    },
+    {
+      "year": 1971,
+      "works_count": 1268,
+      "oa_works_count": 556,
+      "cited_by_count": 71773
+    },
+    {
+      "year": 1970,
+      "works_count": 1083,
+      "oa_works_count": 434,
+      "cited_by_count": 51430
+    },
+    {
+      "year": 1969,
+      "works_count": 981,
+      "oa_works_count": 393,
+      "cited_by_count": 43549
+    },
+    {
+      "year": 1968,
+      "works_count": 900,
+      "oa_works_count": 351,
+      "cited_by_count": 43612
+    },
+    {
+      "year": 1967,
+      "works_count": 839,
+      "oa_works_count": 350,
+      "cited_by_count": 51857
+    },
+    {
+      "year": 1966,
+      "works_count": 687,
+      "oa_works_count": 326,
+      "cited_by_count": 32562
+    },
+    {
+      "year": 1965,
+      "works_count": 627,
+      "oa_works_count": 285,
+      "cited_by_count": 30455
+    },
+    {
+      "year": 1964,
+      "works_count": 640,
+      "oa_works_count": 286,
+      "cited_by_count": 25098
+    },
+    {
+      "year": 1963,
+      "works_count": 487,
+      "oa_works_count": 231,
+      "cited_by_count": 19946
+    },
+    {
+      "year": 1962,
+      "works_count": 382,
+      "oa_works_count": 202,
+      "cited_by_count": 20106
+    },
+    {
+      "year": 1961,
+      "works_count": 285,
+      "oa_works_count": 171,
+      "cited_by_count": 16935
+    },
+    {
+      "year": 1960,
+      "works_count": 215,
+      "oa_works_count": 126,
+      "cited_by_count": 11477
+    },
+    {
+      "year": 1959,
+      "works_count": 195,
+      "oa_works_count": 126,
+      "cited_by_count": 8049
+    },
+    {
+      "year": 1958,
+      "works_count": 124,
+      "oa_works_count": 80,
+      "cited_by_count": 6680
+    },
+    {
+      "year": 1957,
+      "works_count": 135,
+      "oa_works_count": 90,
+      "cited_by_count": 7221
+    },
+    {
+      "year": 1956,
+      "works_count": 126,
+      "oa_works_count": 76,
+      "cited_by_count": 7846
+    },
+    {
+      "year": 1955,
+      "works_count": 111,
+      "oa_works_count": 74,
+      "cited_by_count": 6348
+    },
+    {
+      "year": 1954,
+      "works_count": 87,
+      "oa_works_count": 49,
+      "cited_by_count": 3155
+    },
+    {
+      "year": 1953,
+      "works_count": 77,
+      "oa_works_count": 60,
+      "cited_by_count": 3972
+    },
+    {
+      "year": 1952,
+      "works_count": 63,
+      "oa_works_count": 46,
+      "cited_by_count": 3242
+    },
+    {
+      "year": 1951,
+      "works_count": 36,
+      "oa_works_count": 17,
+      "cited_by_count": 780
+    },
+    {
+      "year": 1950,
+      "works_count": 32,
+      "oa_works_count": 18,
+      "cited_by_count": 850
+    },
+    {
+      "year": 1949,
+      "works_count": 19,
+      "oa_works_count": 12,
+      "cited_by_count": 384
+    },
+    {
+      "year": 1948,
+      "works_count": 4,
+      "oa_works_count": 1,
+      "cited_by_count": 152
+    },
+    {
+      "year": 1947,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 25
+    },
+    {
+      "year": 1946,
+      "works_count": 2,
+      "oa_works_count": 0,
+      "cited_by_count": 140
+    },
+    {
+      "year": 1944,
+      "works_count": 4,
+      "oa_works_count": 1,
+      "cited_by_count": 9
+    },
+    {
+      "year": 1942,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1941,
+      "works_count": 2,
+      "oa_works_count": 0,
+      "cited_by_count": 6
+    },
+    {
+      "year": 1940,
+      "works_count": 2,
+      "oa_works_count": 1,
+      "cited_by_count": 8
+    },
+    {
+      "year": 1939,
+      "works_count": 2,
+      "oa_works_count": 0,
+      "cited_by_count": 21
+    },
+    {
+      "year": 1934,
+      "works_count": 2,
+      "oa_works_count": 0,
+      "cited_by_count": 14
+    },
+    {
+      "year": 1932,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 25
+    },
+    {
+      "year": 1930,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1925,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1921,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1918,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 2
+    },
+    {
+      "year": 1917,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1907,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1900,
+      "works_count": 3,
+      "oa_works_count": 2,
+      "cited_by_count": 123
+    },
+    {
+      "year": 1896,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 105
+    },
+    {
+      "year": 1895,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1891,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 6
+    },
+    {
+      "year": 1889,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1887,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1885,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 1
+    },
+    {
+      "year": 1879,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1877,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1873,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 0
+    },
+    {
+      "year": 1500,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 10
+    },
+    {
+      "year": 1012,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 0
+    }
+  ],
+  "roles": [
+    {
+      "role": "funder",
+      "id": "https://openalex.org/F4320332161",
+      "works_count": 1434400
+    },
+    {
+      "role": "institution",
+      "id": "https://openalex.org/I1299303238",
+      "works_count": 265838
+    },
+    {
+      "role": "publisher",
+      "id": "https://openalex.org/P4310316754",
+      "works_count": 77
+    }
+  ],
+  "updated_date": "2026-03-18T04:02:26",
+  "created_date": "2023-02-13T20:32:25"
+}

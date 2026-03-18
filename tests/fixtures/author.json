@@ -1,0 +1,498 @@
+{
+  "id": "https://openalex.org/A5023888391",
+  "orcid": "https://orcid.org/0000-0001-6187-6610",
+  "display_name": "Jason Priem",
+  "display_name_alternatives": [
+    "Hemminger, Bradley M.",
+    "Jason Priem",
+    "Priem, Jason"
+  ],
+  "works_count": 60,
+  "cited_by_count": 4269,
+  "summary_stats": {
+    "2yr_mean_citedness": 4.0,
+    "h_index": 17,
+    "i10_index": 20
+  },
+  "ids": {
+    "openalex": "https://openalex.org/A5023888391",
+    "orcid": "https://orcid.org/0000-0001-6187-6610"
+  },
+  "affiliations": [
+    {
+      "institution": {
+        "id": "https://openalex.org/I103163165",
+        "ror": "https://ror.org/05g3dte14",
+        "display_name": "Florida State University",
+        "country_code": "US",
+        "type": "education",
+        "lineage": [
+          "https://openalex.org/I103163165"
+        ]
+      },
+      "years": [
+        2020
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I114027177",
+        "ror": "https://ror.org/0130frc33",
+        "display_name": "University of North Carolina at Chapel Hill",
+        "country_code": "US",
+        "type": "education",
+        "lineage": [
+          "https://openalex.org/I114027177"
+        ]
+      },
+      "years": [
+        2014,
+        2013,
+        2012,
+        2011,
+        2010
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I145311948",
+        "ror": "https://ror.org/00za53h95",
+        "display_name": "Johns Hopkins University",
+        "country_code": "US",
+        "type": "education",
+        "lineage": [
+          "https://openalex.org/I145311948"
+        ]
+      },
+      "years": [
+        2020
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I33213144",
+        "ror": "https://ror.org/02y3ad647",
+        "display_name": "University of Florida",
+        "country_code": "US",
+        "type": "education",
+        "lineage": [
+          "https://openalex.org/I33213144"
+        ]
+      },
+      "years": [
+        2008
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I4200000001",
+        "ror": "https://ror.org/02nr0ka47",
+        "display_name": "OpenAlex",
+        "country_code": "CA",
+        "type": "nonprofit",
+        "lineage": [
+          "https://openalex.org/I4200000001"
+        ]
+      },
+      "years": [
+        2023,
+        2022,
+        2021,
+        2019,
+        2018,
+        2017,
+        2013
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I4210088659",
+        "ror": "https://ror.org/005b2xe71",
+        "display_name": "WntResearch (Sweden)",
+        "country_code": "SE",
+        "type": "company",
+        "lineage": [
+          "https://openalex.org/I4210088659"
+        ]
+      },
+      "years": [
+        2023,
+        2022
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I4210129766",
+        "ror": "https://ror.org/03np5z244",
+        "display_name": "DermResearch (United States)",
+        "country_code": "US",
+        "type": "company",
+        "lineage": [
+          "https://openalex.org/I4210129766"
+        ]
+      },
+      "years": [
+        2022,
+        2020
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I4210161256",
+        "ror": "https://ror.org/05d9dsr70",
+        "display_name": "Impact",
+        "country_code": "CA",
+        "type": "nonprofit",
+        "lineage": [
+          "https://openalex.org/I4210161256"
+        ]
+      },
+      "years": [
+        2013
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I4210166736",
+        "ror": "https://ror.org/05ppvf150",
+        "display_name": "Impact Technology Development (United States)",
+        "country_code": "US",
+        "type": "company",
+        "lineage": [
+          "https://openalex.org/I4210166736"
+        ]
+      },
+      "years": [
+        2018,
+        2017,
+        2013
+      ]
+    },
+    {
+      "institution": {
+        "id": "https://openalex.org/I94062374",
+        "ror": "https://ror.org/010bgev76",
+        "display_name": "Florida College",
+        "country_code": "US",
+        "type": "education",
+        "lineage": [
+          "https://openalex.org/I94062374"
+        ]
+      },
+      "years": [
+        2008
+      ]
+    }
+  ],
+  "last_known_institutions": null,
+  "topics": [
+    {
+      "id": "https://openalex.org/T10102",
+      "display_name": "scientometrics and bibliometrics research",
+      "count": 24,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1804",
+        "display_name": "Statistics, Probability and Uncertainty"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/18",
+        "display_name": "Decision Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T11937",
+      "display_name": "Research Data Management Practices",
+      "count": 13,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1710",
+        "display_name": "Information Systems"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T12478",
+      "display_name": "Wikis in Education and Collaboration",
+      "count": 8,
+      "subfield": {
+        "id": "https://openalex.org/subfields/3315",
+        "display_name": "Communication"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/33",
+        "display_name": "Social Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T10215",
+      "display_name": "Semantic Web and Ontologies",
+      "count": 7,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1702",
+        "display_name": "Artificial Intelligence"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T11719",
+      "display_name": "Data Quality and Management",
+      "count": 7,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1803",
+        "display_name": "Management Science and Operations Research"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/18",
+        "display_name": "Decision Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    }
+  ],
+  "topic_share": [
+    {
+      "id": "https://openalex.org/T10102",
+      "display_name": "scientometrics and bibliometrics research",
+      "value": 0.0002187,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1804",
+        "display_name": "Statistics, Probability and Uncertainty"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/18",
+        "display_name": "Decision Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T13976",
+      "display_name": "Web visibility and informetrics",
+      "value": 0.0002061,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1710",
+        "display_name": "Information Systems"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T12478",
+      "display_name": "Wikis in Education and Collaboration",
+      "value": 0.0001176,
+      "subfield": {
+        "id": "https://openalex.org/subfields/3315",
+        "display_name": "Communication"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/33",
+        "display_name": "Social Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T11937",
+      "display_name": "Research Data Management Practices",
+      "value": 0.0001066,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1710",
+        "display_name": "Information Systems"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/17",
+        "display_name": "Computer Science"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/3",
+        "display_name": "Physical Sciences"
+      }
+    },
+    {
+      "id": "https://openalex.org/T14222",
+      "display_name": "Knowledge Management and Technology",
+      "value": 5.95e-05,
+      "subfield": {
+        "id": "https://openalex.org/subfields/1803",
+        "display_name": "Management Science and Operations Research"
+      },
+      "field": {
+        "id": "https://openalex.org/fields/18",
+        "display_name": "Decision Sciences"
+      },
+      "domain": {
+        "id": "https://openalex.org/domains/2",
+        "display_name": "Social Sciences"
+      }
+    }
+  ],
+  "x_concepts": [
+    {
+      "id": "41008148",
+      "wikidata": "https://www.wikidata.org/wiki/Q21198",
+      "display_name": "Computer science",
+      "score": 0.7960027456283569
+    },
+    {
+      "id": "136764020",
+      "wikidata": "https://www.wikidata.org/wiki/Q466",
+      "display_name": "World Wide Web",
+      "score": 0.6372325420379639
+    },
+    {
+      "id": "2522767166",
+      "wikidata": "https://www.wikidata.org/wiki/Q2374463",
+      "display_name": "Data science",
+      "score": 0.6053662300109863
+    },
+    {
+      "id": "17744445",
+      "wikidata": "https://www.wikidata.org/wiki/Q36442",
+      "display_name": "Political science",
+      "score": 0.49647265672683716
+    },
+    {
+      "id": "199539241",
+      "wikidata": "https://www.wikidata.org/wiki/Q7748",
+      "display_name": "Law",
+      "score": 0.16422906517982483
+    }
+  ],
+  "counts_by_year": [
+    {
+      "year": 2008,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 115
+    },
+    {
+      "year": 2010,
+      "works_count": 4,
+      "oa_works_count": 3,
+      "cited_by_count": 903
+    },
+    {
+      "year": 2011,
+      "works_count": 3,
+      "oa_works_count": 3,
+      "cited_by_count": 11
+    },
+    {
+      "year": 2012,
+      "works_count": 9,
+      "oa_works_count": 7,
+      "cited_by_count": 907
+    },
+    {
+      "year": 2013,
+      "works_count": 10,
+      "oa_works_count": 9,
+      "cited_by_count": 338
+    },
+    {
+      "year": 2014,
+      "works_count": 3,
+      "oa_works_count": 2,
+      "cited_by_count": 271
+    },
+    {
+      "year": 2015,
+      "works_count": 2,
+      "oa_works_count": 2,
+      "cited_by_count": 14
+    },
+    {
+      "year": 2017,
+      "works_count": 7,
+      "oa_works_count": 6,
+      "cited_by_count": 147
+    },
+    {
+      "year": 2018,
+      "works_count": 2,
+      "oa_works_count": 1,
+      "cited_by_count": 1162
+    },
+    {
+      "year": 2019,
+      "works_count": 3,
+      "oa_works_count": 3,
+      "cited_by_count": 101
+    },
+    {
+      "year": 2020,
+      "works_count": 6,
+      "oa_works_count": 6,
+      "cited_by_count": 12
+    },
+    {
+      "year": 2021,
+      "works_count": 1,
+      "oa_works_count": 0,
+      "cited_by_count": 11
+    },
+    {
+      "year": 2022,
+      "works_count": 2,
+      "oa_works_count": 2,
+      "cited_by_count": 273
+    },
+    {
+      "year": 2023,
+      "works_count": 6,
+      "oa_works_count": 6,
+      "cited_by_count": 0
+    },
+    {
+      "year": 2024,
+      "works_count": 1,
+      "oa_works_count": 1,
+      "cited_by_count": 4
+    }
+  ],
+  "longest_name": "Hemminger, Bradley M.",
+  "parsed_longest_name": {
+    "first": "jason",
+    "middle": "",
+    "last": "priem",
+    "suffix": "",
+    "nickname": ""
+  },
+  "block_key": "j priem",
+  "works_api_url": "https://api.openalex.org/works?filter=author.id:A5023888391",
+  "updated_date": "2026-03-15T12:21:24",
+  "created_date": "2016-06-24T00:00:00"
+}
