@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Any, Generic, Iterator, TypeVar
+from collections.abc import Iterator
+from typing import TYPE_CHECKING, Any, Generic, TypeVar
 
 from pyopenalex.expressions import FilterExpression
 from pyopenalex.models.base import GroupByResult, Meta, OpenAlexModel
@@ -37,7 +38,7 @@ def _serialize_value(value: Any) -> str:
         return value.to_value()
     if isinstance(value, bool):
         return str(value).lower()
-    if isinstance(value, (list, tuple)):
+    if isinstance(value, list | tuple):
         return "|".join(str(v) for v in value)
     return str(value)
 

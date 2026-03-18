@@ -57,9 +57,7 @@ class Endpoint(Generic[T]):
 
     def autocomplete(self, query: str) -> list[AutocompleteResult]:
         entity_type = self._path.strip("/")
-        data = self._http.request(
-            "GET", f"/autocomplete/{entity_type}", params={"q": query}
-        )
+        data = self._http.request("GET", f"/autocomplete/{entity_type}", params={"q": query})
         return [AutocompleteResult(**r) for r in data.get("results", [])]
 
     def _query(self) -> QueryBuilder[T]:

@@ -32,6 +32,14 @@ Homepage = "https://github.com/nthomsencph/pyopenalex"
 Repository = "https://github.com/nthomsencph/pyopenalex"
 Issues = "https://github.com/nthomsencph/pyopenalex/issues"
 
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+ignore = ["UP046"]
+
 [tool.hatch.build.targets.sdist]
 exclude = ["tests/", ".claude/", ".python-version", "logo.png"]
 

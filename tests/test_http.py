@@ -23,9 +23,7 @@ class TestHttpClient:
 
         # Disable wait between retries in tests
         client._request_with_retry.retry.wait = wait_none()
-        client._request_with_retry.retry.stop = stop_after_attempt(
-            settings.max_retries
-        )
+        client._request_with_retry.retry.stop = stop_after_attempt(settings.max_retries)
 
         call_count = 0
 
