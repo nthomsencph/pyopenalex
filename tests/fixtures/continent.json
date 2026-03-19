@@ -1,0 +1,17 @@
+{
+  "id": "https://openalex.org/continents/Q46",
+  "display_name": "Europe",
+  "description": "continent",
+  "ids": {
+    "openalex": "https://openalex.org/continents/Q46",
+    "wikidata": "Q46"
+  },
+  "display_name_alternatives": ["Old Continent"],
+  "countries": [
+    {"id": "https://openalex.org/countries/DE", "display_name": "Germany"},
+    {"id": "https://openalex.org/countries/FR", "display_name": "France"},
+    {"id": "https://openalex.org/countries/GB", "display_name": "United Kingdom"}
+  ],
+  "updated_date": "2026-02-11T03:17:20",
+  "created_date": "2024-02-12T14:06:00"
+}

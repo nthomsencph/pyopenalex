@@ -1,0 +1,23 @@
+{
+  "id": "https://openalex.org/fields/17",
+  "display_name": "Computer Science",
+  "description": "study of computation",
+  "ids": {
+    "openalex": "https://openalex.org/fields/17",
+    "wikidata": "https://www.wikidata.org/wiki/Q21198"
+  },
+  "display_name_alternatives": ["CS", "informatics"],
+  "domain": {"id": "https://openalex.org/domains/3", "display_name": "Physical Sciences"},
+  "subfields": [
+    {"id": "https://openalex.org/subfields/1702", "display_name": "Artificial Intelligence"},
+    {"id": "https://openalex.org/subfields/1712", "display_name": "Software"}
+  ],
+  "siblings": [
+    {"id": "https://openalex.org/fields/26", "display_name": "Mathematics"}
+  ],
+  "works_count": 23070135,
+  "cited_by_count": 154838820,
+  "works_api_url": "https://api.openalex.org/works?filter=topics.field.id:17",
+  "updated_date": "2026-03-19T03:02:50",
+  "created_date": "2024-01-23T15:21:08"
+}

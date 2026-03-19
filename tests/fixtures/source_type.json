@@ -1,0 +1,10 @@
+{
+  "id": "https://openalex.org/source-types/journal",
+  "display_name": "journal",
+  "description": "Peer-reviewed periodicals like Nature or The Lancet that publish research on a regular schedule.",
+  "works_count": 183710213,
+  "cited_by_count": 2476446481,
+  "works_api_url": "https://api.openalex.org/works?filter=locations.source.type:journal",
+  "updated_date": "2026-03-19T06:04:42",
+  "created_date": "2024-03-06T08:36:35"
+}

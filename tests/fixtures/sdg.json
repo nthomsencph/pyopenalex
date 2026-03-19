@@ -1,0 +1,17 @@
+{
+  "id": "https://openalex.org/sdgs/3",
+  "display_name": "Good health and well-being",
+  "description": "Ensure healthy lives and promote well-being for all at all ages.",
+  "ids": {
+    "openalex": "https://openalex.org/sdgs/3",
+    "un": "https://metadata.un.org/sdg/3",
+    "wikidata": "https://www.wikidata.org/wiki/Q50216838"
+  },
+  "works_count": 25754304,
+  "cited_by_count": 495657174,
+  "image_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Sustainable Development Goal 03GoodHealth.svg",
+  "image_thumbnail_url": "https://commons.wikimedia.org/w/index.php?title=Special:Redirect/file/Sustainable Development Goal 03GoodHealth.svg&width=300",
+  "works_api_url": "https://api.openalex.org/works?filter=sustainable_development_goals.id:https://metadata.un.org/sdg/3",
+  "updated_date": "2026-03-19T06:04:20",
+  "created_date": "2024-02-09T16:07:27"
+}

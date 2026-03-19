@@ -233,6 +233,134 @@ def _keyword(entity: Any, **kwargs: Any) -> str:
     return "".join(parts)
 
 
+def _domain(entity: Any, limit_abstract: int | None = None, **kwargs: Any) -> str:
+    parts = [f"## {entity.display_name}\n\n"]
+
+    meta = ""
+    meta += _line("Works", _count(entity.works_count))
+    meta += _line("Citations", _count(entity.cited_by_count))
+
+    if entity.fields:
+        names = [f.display_name for f in entity.fields]
+        meta += _line("Fields", ", ".join(names))
+
+    parts.append(meta)
+
+    if entity.description:
+        desc = entity.description
+        if limit_abstract is not None and len(desc) > limit_abstract:
+            desc = desc[:limit_abstract] + "..."
+        parts.append(f"\n{desc}\n")
+
+    return "".join(parts)
+
+
+def _field(entity: Any, limit_abstract: int | None = None, **kwargs: Any) -> str:
+    parts = [f"## {entity.display_name}\n\n"]
+
+    meta = ""
+    if entity.domain:
+        meta += _line("Domain", entity.domain.display_name)
+    meta += _line("Works", _count(entity.works_count))
+    meta += _line("Citations", _count(entity.cited_by_count))
+
+    if entity.subfields:
+        names = [s.display_name for s in entity.subfields[:10]]
+        suffix = f" (+{len(entity.subfields) - 10} more)" if len(entity.subfields) > 10 else ""
+        meta += _line("Subfields", ", ".join(names) + suffix)
+
+    parts.append(meta)
+
+    if entity.description:
+        desc = entity.description
+        if limit_abstract is not None and len(desc) > limit_abstract:
+            desc = desc[:limit_abstract] + "..."
+        parts.append(f"\n{desc}\n")
+
+    return "".join(parts)
+
+
+def _subfield(entity: Any, limit_abstract: int | None = None, **kwargs: Any) -> str:
+    parts = [f"## {entity.display_name}\n\n"]
+
+    meta = ""
+    if entity.domain:
+        meta += _line("Domain", entity.domain.display_name)
+    if entity.field:
+        meta += _line("Field", entity.field.display_name)
+    meta += _line("Works", _count(entity.works_count))
+    meta += _line("Citations", _count(entity.cited_by_count))
+
+    parts.append(meta)
+
+    if entity.description:
+        desc = entity.description
+        if limit_abstract is not None and len(desc) > limit_abstract:
+            desc = desc[:limit_abstract] + "..."
+        parts.append(f"\n{desc}\n")
+
+    return "".join(parts)
+
+
+def _sdg(entity: Any, limit_abstract: int | None = None, **kwargs: Any) -> str:
+    parts = [f"## {entity.display_name}\n\n"]
+
+    meta = ""
+    meta += _line("Works", _count(entity.works_count))
+    meta += _line("Citations", _count(entity.cited_by_count))
+
+    parts.append(meta)
+
+    if entity.description:
+        desc = entity.description
+        if limit_abstract is not None and len(desc) > limit_abstract:
+            desc = desc[:limit_abstract] + "..."
+        parts.append(f"\n{desc}\n")
+
+    return "".join(parts)
+
+
+def _country(entity: Any, **kwargs: Any) -> str:
+    parts = [f"## {entity.display_name}\n\n"]
+
+    meta = ""
+    meta += _line("Country Code", entity.country_code)
+    if entity.continent:
+        meta += _line("Continent", entity.continent.display_name)
+    if entity.is_global_south is not None:
+        meta += _line("Global South", "Yes" if entity.is_global_south else "No")
+    meta += _line("Works", _count(entity.works_count))
+    meta += _line("Citations", _count(entity.cited_by_count))
+
+    parts.append(meta)
+    return "".join(parts)
+
+
+def _continent(entity: Any, **kwargs: Any) -> str:
+    parts = [f"## {entity.display_name}\n\n"]
+
+    meta = ""
+    if entity.countries:
+        meta += _line("Countries", f"{len(entity.countries)} countries")
+
+    parts.append(meta)
+    return "".join(parts)
+
+
+def _award(entity: Any, **kwargs: Any) -> str:
+    name = entity.display_name or entity.funder_award_id or entity.id
+    parts = [f"## {name}\n\n"]
+
+    meta = ""
+    if entity.funder:
+        meta += _line("Funder", entity.funder.display_name)
+    meta += _line("Award ID", entity.funder_award_id)
+    meta += _line("Funded Outputs", _count(entity.funded_outputs_count))
+
+    parts.append(meta)
+    return "".join(parts)
+
+
 _RENDERERS = {
     "Work": _work,
     "Author": _author,
@@ -242,4 +370,11 @@ _RENDERERS = {
     "Publisher": _publisher,
     "Funder": _funder,
     "Keyword": _keyword,
+    "Domain": _domain,
+    "Field": _field,
+    "Subfield": _subfield,
+    "Sdg": _sdg,
+    "Country": _country,
+    "Continent": _continent,
+    "Award": _award,
 }

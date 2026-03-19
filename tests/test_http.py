@@ -1,19 +1,28 @@
+import json
+
 import pytest
 from tenacity import stop_after_attempt, wait_none
 
 from pyopenalex._http import HttpClient
 from pyopenalex.config import Settings
-from pyopenalex.exceptions import APIError, NotFoundError, RateLimitError
+from pyopenalex.exceptions import APIError, AuthenticationError, NotFoundError, RateLimitError
 
 
 class FakeResponse:
     def __init__(self, status_code: int, data: dict | str = ""):
         self.status_code = status_code
         self._data = data
-        self.text = data if isinstance(data, str) else ""
+        if isinstance(data, str):
+            self.text = data
+            self.content = data.encode()
+        else:
+            self.text = json.dumps(data)
+            self.content = self.text.encode()
 
     def json(self):
-        return self._data
+        if isinstance(self._data, dict):
+            return self._data
+        return json.loads(self._data) if self._data else {}
 
 
 class TestHttpClient:
@@ -52,10 +61,11 @@ class TestHttpClient:
             client.request("GET", "/works")
         assert exc_info.value.status_code == 400
 
-    def test_429_retries_then_raises(self):
-        responses = [FakeResponse(429)] * 3
-        client = self._make_client(responses, max_retries=3)
-        with pytest.raises(RateLimitError):
+    def test_429_raises_immediately(self):
+        """429 (daily limit) should not retry — the limit won't reset mid-request."""
+        body = {"error": "Daily limit exceeded", "message": "Rate limit exceeded"}
+        client = self._make_client([FakeResponse(429, body)], max_retries=3)
+        with pytest.raises(RateLimitError, match="Daily limit exceeded"):
             client.request("GET", "/works")
 
     def test_500_retries_then_raises(self):
@@ -64,11 +74,12 @@ class TestHttpClient:
         with pytest.raises(APIError):
             client.request("GET", "/works")
 
-    def test_429_then_success(self):
-        responses = [FakeResponse(429), FakeResponse(200, {"ok": True})]
+    def test_429_does_not_retry(self):
+        """Even if a success would follow, 429 should fail immediately."""
+        responses = [FakeResponse(429, {"error": "limit"}), FakeResponse(200, {"ok": True})]
         client = self._make_client(responses, max_retries=3)
-        result = client.request("GET", "/works")
-        assert result == {"ok": True}
+        with pytest.raises(RateLimitError):
+            client.request("GET", "/works")
 
     def test_api_key_added_to_params(self):
         client = self._make_client([FakeResponse(200, {})], api_key="test-key")
@@ -82,3 +93,53 @@ class TestHttpClient:
         client._client.request = capture_request
         client.request("GET", "/works")
         assert captured_params["api_key"] == "test-key"
+
+    def test_401_raises_authentication_error(self):
+        body = {"error": "Invalid or missing API key", "message": "API key not found"}
+        client = self._make_client([FakeResponse(401, body)])
+        with pytest.raises(AuthenticationError, match="Invalid or missing API key"):
+            client.request("GET", "/works")
+
+    def test_403_retries_then_raises_rate_limit(self):
+        body = {"error": "Rate limit exceeded", "message": "Too many requests per second"}
+        responses = [FakeResponse(403, body)] * 3
+        client = self._make_client(responses, max_retries=3)
+        with pytest.raises(RateLimitError, match="Rate limit exceeded"):
+            client.request("GET", "/works")
+
+    def test_403_then_success(self):
+        body = {"error": "Rate limit exceeded", "message": "Too many requests per second"}
+        responses = [FakeResponse(403, body), FakeResponse(200, {"ok": True})]
+        client = self._make_client(responses, max_retries=3)
+        result = client.request("GET", "/works")
+        assert result == {"ok": True}
+
+    def test_429_includes_api_key_hint_when_no_key(self):
+        body = {"error": "Daily limit exceeded", "message": "Rate limit exceeded"}
+        settings = Settings(api_key=None)
+        client = HttpClient(settings)
+        client._client.request = lambda *a, **kw: FakeResponse(429, body)
+        with pytest.raises(RateLimitError, match="No API key set"):
+            client.request("GET", "/works")
+
+    def test_429_no_hint_when_key_present(self):
+        body = {"error": "Daily limit exceeded", "message": "Rate limit exceeded"}
+        client = self._make_client([FakeResponse(429, body)], api_key="k")
+        with pytest.raises(RateLimitError) as exc_info:
+            client.request("GET", "/works")
+        assert "No API key set" not in str(exc_info.value)
+
+    def test_400_includes_error_body(self):
+        body = {
+            "error": "Invalid filter",
+            "message": "Unknown filter field: author_name. Did you mean: authorships.author.id?",
+        }
+        client = self._make_client([FakeResponse(400, body)])
+        with pytest.raises(APIError, match="Did you mean"):
+            client.request("GET", "/works")
+
+    def test_404_includes_error_body(self):
+        body = {"error": "Not found", "message": "Work W999 does not exist"}
+        client = self._make_client([FakeResponse(404, body)])
+        with pytest.raises(NotFoundError, match="W999 does not exist"):
+            client.request("GET", "/works/W999")

@@ -1,0 +1,24 @@
+{
+  "id": "https://openalex.org/subfields/1105",
+  "display_name": "Ecology, Evolution, Behavior and Systematics",
+  "description": "scientific study of the relationships between living organisms",
+  "ids": {
+    "openalex": "https://openalex.org/subfields/1105",
+    "wikidata": "https://www.wikidata.org/wiki/Q7150"
+  },
+  "display_name_alternatives": ["ecological science"],
+  "field": {"id": "https://openalex.org/fields/11", "display_name": "Agricultural and Biological Sciences"},
+  "domain": {"id": "https://openalex.org/domains/1", "display_name": "Life Sciences"},
+  "topics": [
+    {"id": "https://openalex.org/T10112", "display_name": "Ecological Niche Modeling"},
+    {"id": "https://openalex.org/T10089", "display_name": "Phylogenetics"}
+  ],
+  "siblings": [
+    {"id": "https://openalex.org/subfields/1101", "display_name": "Agricultural and Biological Sciences (miscellaneous)"}
+  ],
+  "works_count": 3836695,
+  "cited_by_count": 18056244,
+  "works_api_url": "https://api.openalex.org/works?filter=topics.subfield.id:1105",
+  "updated_date": "2026-03-19T03:02:45",
+  "created_date": "2024-01-23T15:19:48"
+}

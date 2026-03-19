@@ -9,7 +9,15 @@ class NotFoundError(OpenAlexError):
     pass
 
 
+class AuthenticationError(OpenAlexError):
+    """Raised on 401 — invalid or missing API key."""
+
+    pass
+
+
 class RateLimitError(OpenAlexError):
+    """Raised on 403 (burst rate limit) or 429 (daily limit exceeded)."""
+
     pass
 
 

@@ -1,0 +1,20 @@
+{
+  "id": "https://openalex.org/countries/US",
+  "display_name": "United States of America",
+  "country_code": "US",
+  "description": "country primarily located in North America",
+  "ids": {
+    "openalex": "https://openalex.org/countries/US",
+    "wikidata": "https://www.wikidata.org/wiki/Q30"
+  },
+  "display_name_alternatives": ["USA", "America", "US"],
+  "continent": {"id": "https://openalex.org/continents/Q49", "display_name": "North America"},
+  "is_global_south": false,
+  "works_count": 35273064,
+  "cited_by_count": 1010392064,
+  "authors_api_url": "https://api.openalex.org/authors?filter=last_known_institutions.country_code:US",
+  "institutions_api_url": "https://api.openalex.org/institutions?filter=country_code:US",
+  "works_api_url": "https://api.openalex.org/works?filter=authorships.countries:US",
+  "updated_date": "2026-03-19T06:04:41",
+  "created_date": "2024-02-12T14:29:17"
+}

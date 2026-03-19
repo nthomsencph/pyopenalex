@@ -1,0 +1,23 @@
+{
+  "id": "https://openalex.org/domains/1",
+  "display_name": "Life Sciences",
+  "description": "branch of science that involve the scientific study of life",
+  "ids": {
+    "openalex": "https://openalex.org/domains/1",
+    "wikidata": "https://www.wikidata.org/wiki/Q864928"
+  },
+  "display_name_alternatives": ["bioscience", "biological science disciplines"],
+  "fields": [
+    {"id": "https://openalex.org/fields/11", "display_name": "Agricultural and Biological Sciences"},
+    {"id": "https://openalex.org/fields/13", "display_name": "Biochemistry, Genetics and Molecular Biology"}
+  ],
+  "siblings": [
+    {"id": "https://openalex.org/domains/2", "display_name": "Social Sciences"},
+    {"id": "https://openalex.org/domains/3", "display_name": "Physical Sciences"}
+  ],
+  "works_count": 51142442,
+  "cited_by_count": 585471543,
+  "works_api_url": "https://api.openalex.org/works?filter=topics.domain.id:1",
+  "updated_date": "2026-03-19T03:02:55",
+  "created_date": "2024-01-23T15:21:58"
+}

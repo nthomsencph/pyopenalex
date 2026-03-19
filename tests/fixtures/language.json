@@ -1,0 +1,9 @@
+{
+  "id": "https://openalex.org/languages/en",
+  "display_name": "English",
+  "works_count": 337627121,
+  "cited_by_count": 2749898094,
+  "works_api_url": "https://api.openalex.org/works?filter=language:en",
+  "updated_date": "2026-03-19T06:04:22",
+  "created_date": "2024-02-12T16:48:43"
+}

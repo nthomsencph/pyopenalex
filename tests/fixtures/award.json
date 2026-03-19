@@ -1,0 +1,14 @@
+{
+  "id": "https://openalex.org/G2087396116",
+  "display_name": null,
+  "funder": {
+    "id": "https://openalex.org/F4320321001",
+    "display_name": "National Natural Science Foundation of China"
+  },
+  "funder_award_id": "China",
+  "funded_outputs_count": 839935,
+  "funded_outputs": ["https://openalex.org/W603291", "https://openalex.org/W665341"],
+  "works_api_url": "https://api.openalex.org/works?filter=awards.id:G2087396116",
+  "updated_date": "2026-03-18T20:44:39",
+  "created_date": "2026-03-15T01:01:24"
+}

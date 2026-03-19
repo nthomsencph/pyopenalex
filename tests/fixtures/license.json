@@ -1,0 +1,11 @@
+{
+  "id": "https://openalex.org/licenses/cc-by",
+  "display_name": "CC-BY",
+  "description": "Reuse allowed with credit to the creator, including commercial use.",
+  "url": "https://creativecommons.org/licenses/by/4.0/",
+  "works_count": 42855200,
+  "cited_by_count": 270682010,
+  "works_api_url": "https://api.openalex.org/works?filter=locations.license_id:licenses/cc-by",
+  "updated_date": "2026-03-19T06:04:27",
+  "created_date": "2024-04-12T17:15:12"
+}
