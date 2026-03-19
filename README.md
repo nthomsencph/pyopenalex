@@ -22,7 +22,7 @@ with OpenAlex() as client:
 pip install pyopenalex
 ```
 
-Requires Python 3.13+.
+Requires Python 3.10+.
 
 ## Quick Start
 
@@ -45,17 +45,34 @@ for author in results.results:
 
 ## Entities
 
-PyOpenAlex supports all core OpenAlex entity types:
+PyOpenAlex supports all OpenAlex entity types:
 
 ```python
-client.works          # Scholarly documents (articles, books, datasets)
-client.authors        # Researcher profiles
-client.sources        # Journals, repositories, conferences
-client.institutions   # Universities, research organizations
-client.topics         # Subject classifications
-client.keywords       # Extracted keywords
-client.publishers     # Publishing organizations
-client.funders        # Funding agencies
+# Core entities
+client.works              # Scholarly documents (articles, books, datasets)
+client.authors            # Researcher profiles
+client.sources            # Journals, repositories, conferences
+client.institutions       # Universities, research organizations
+client.topics             # Subject classifications
+client.keywords           # Extracted keywords
+client.publishers         # Publishing organizations
+client.funders            # Funding agencies
+
+# Topic hierarchy
+client.domains            # Top-level categories (4 total)
+client.fields             # Second-level categories (26 total)
+client.subfields          # Third-level categories (254 total)
+
+# Reference entities
+client.sdgs               # UN Sustainable Development Goals
+client.countries          # Countries
+client.continents         # Continents
+client.languages          # Languages
+client.work_types         # Work types (article, book, dataset, etc.)
+client.source_types       # Source types (journal, repository, etc.)
+client.institution_types  # Institution types (education, company, etc.)
+client.licenses           # Open access licenses (CC BY, etc.)
+client.awards             # Research grants and funding awards
 ```
 
 Every entity is a Pydantic model with fully typed fields and convenience aliases:
@@ -364,7 +381,7 @@ client = OpenAlex(
     api_key="your-key",
     base_url="https://api.openalex.org",  # default
     timeout=30.0,                          # request timeout in seconds
-    max_retries=3,                         # retries on 429/5xx errors
+    max_retries=3,                         # retries on 403/5xx errors
 )
 ```
 
@@ -415,24 +432,50 @@ Use `limit_abstract` to truncate long abstracts:
 work.to_markdown(limit_abstract=150)
 ```
 
+## Special Endpoints
+
+```python
+# Check rate limit status (requires API key)
+rl = client.rate_limit()
+print(f"Remaining: ${rl.remaining_cost_today_usd}")
+
+# List available changefiles for bulk data sync
+dates = client.changefiles()
+entries = client.changefile("2026-03-18")
+
+# Download a PDF ($0.01 per download)
+client.download_pdf("W2741809807", "/tmp/paper.pdf")
+```
+
 ## Error Handling
 
 PyOpenAlex raises typed exceptions:
 
 ```python
-from pyopenalex.exceptions import NotFoundError, RateLimitError, APIError
+from pyopenalex import (
+    AuthenticationError,
+    NotFoundError,
+    RateLimitError,
+    APIError,
+)
 
 try:
     work = client.works.get("W0000000000")
 except NotFoundError:
     print("Work not found")
+except AuthenticationError:
+    print("Invalid or missing API key")
 except RateLimitError:
-    print("Daily rate limit exceeded")
+    print("Rate limit exceeded")
 except APIError as e:
     print(f"HTTP {e.status_code}: {e}")
 ```
 
-Retries with exponential backoff are automatic for 429 (rate limit) and 5xx (server error) responses.
+Error responses include the API's own messages, including helpful suggestions like "Did you mean: authorships.author.id?".
+
+- **403** (burst rate limit): retries automatically with exponential backoff
+- **429** (daily limit exhausted): fails immediately with an actionable message
+- **5xx** (server error): retries automatically with exponential backoff
 
 ## Abstract Reconstruction
 
@@ -445,7 +488,7 @@ print(work.abstract)  # full abstract text, or None if unavailable
 
 ## Examples
 
-See [`examples/quickstart.py`](examples/quickstart.py) for a runnable script showcasing all features.
+See [`examples/quickstart.py`](examples/quickstart.py) for a runnable script showcasing core features and [`examples/new_endpoints.py`](examples/new_endpoints.py) for the topic hierarchy, geographic, and special endpoints.
 
 ## License
 

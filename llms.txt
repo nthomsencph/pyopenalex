@@ -4,7 +4,7 @@
 
 PyOpenAlex wraps the OpenAlex API (https://api.openalex.org) with Pydantic models for all entity types. The design follows FastAPI and Pydantic patterns: immutable query builders, typed models, filter expressions as descriptor functions, and environment-based configuration via pydantic-settings.
 
-Install with `pip install pyopenalex`. Requires Python 3.13+.
+Install with `pip install pyopenalex`. Requires Python 3.10+.
 
 ```python
 from pyopenalex import OpenAlex, gt
@@ -21,7 +21,7 @@ with OpenAlex(api_key="...") as client:
 
 ## Client and Configuration
 
-- [client.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/client.py): OpenAlex client class with endpoint registry and context manager support
+- [client.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/client.py): OpenAlex client class with endpoint registry, special methods (rate_limit, changefiles, download_pdf), and context manager support
 - [config.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/config.py): Settings via pydantic-settings, configurable through OPENALEX_ env vars
 - [_http.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/_http.py): HTTP client with tenacity retry and exponential backoff
 
@@ -42,11 +42,25 @@ with OpenAlex(api_key="...") as client:
 - [models/keywords.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/keywords.py): Keyword model
 - [models/publishers.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/publishers.py): Publisher model
 - [models/funders.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/funders.py): Funder model
+- [models/domains.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/domains.py): Domain model (top-level topic category)
+- [models/fields.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/fields.py): Field model (second-level topic category)
+- [models/subfields.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/subfields.py): Subfield model (third-level topic category)
+- [models/sdgs.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/sdgs.py): Sdg model (UN Sustainable Development Goals)
+- [models/countries.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/countries.py): Country model
+- [models/continents.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/continents.py): Continent model
+- [models/languages.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/languages.py): Language model
+- [models/work_types.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/work_types.py): WorkType model
+- [models/source_types.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/source_types.py): SourceType model
+- [models/institution_types.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/institution_types.py): InstitutionType model
+- [models/licenses.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/licenses.py): License model
+- [models/awards.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/awards.py): Award model (research grants)
+- [models/special.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/special.py): RateLimit, ChangefileDate, ChangefileEntry models
 - [markdown.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/markdown.py): Markdown renderers for all entity types with limit_abstract support
 
 ## Optional
 
-- [exceptions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/exceptions.py): NotFoundError, RateLimitError, APIError
+- [exceptions.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/exceptions.py): OpenAlexError, AuthenticationError, NotFoundError, RateLimitError, APIError
 - [models/autocomplete.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyopenalex/models/autocomplete.py): AutocompleteResult model
-- [examples/quickstart.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/examples/quickstart.py): Runnable example showcasing all features
+- [examples/quickstart.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/examples/quickstart.py): Runnable example showcasing core features
+- [examples/new_endpoints.py](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/examples/new_endpoints.py): Smoke test for topic hierarchy, geographic, and special endpoints
 - [pyproject.toml](https://raw.githubusercontent.com/nthomsencph/pyopenalex/main/pyproject.toml): Package metadata and dependencies

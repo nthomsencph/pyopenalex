@@ -1,6 +1,6 @@
 ---
 name: pyopenalex
-description: Use this skill when writing Python code that queries OpenAlex (scholarly works, authors, institutions, sources, topics, publishers, funders). Provides the pyopenalex API reference and usage patterns.
+description: Use this skill when writing Python code that queries OpenAlex (scholarly works, authors, institutions, sources, topics, publishers, funders, domains, countries, SDGs, awards). Provides the pyopenalex API reference and usage patterns.
 ---
 
 # PyOpenAlex
@@ -23,14 +23,31 @@ with OpenAlex() as client:
 ## Entity Endpoints
 
 ```python
-client.works          # Scholarly documents
-client.authors        # Researcher profiles
-client.sources        # Journals, repositories
-client.institutions   # Universities, organizations
-client.topics         # Subject classifications
-client.keywords       # Extracted keywords
-client.publishers     # Publishing organizations
-client.funders        # Funding agencies
+# Core entities
+client.works              # Scholarly documents
+client.authors            # Researcher profiles
+client.sources            # Journals, repositories
+client.institutions       # Universities, organizations
+client.topics             # Subject classifications
+client.keywords           # Extracted keywords
+client.publishers         # Publishing organizations
+client.funders            # Funding agencies
+
+# Topic hierarchy
+client.domains            # Top-level categories (4 total)
+client.fields             # Second-level categories (26 total)
+client.subfields          # Third-level categories (254 total)
+
+# Reference entities
+client.sdgs               # UN Sustainable Development Goals
+client.countries          # Countries
+client.continents         # Continents
+client.languages          # Languages
+client.work_types         # Work types (article, book, dataset, etc.)
+client.source_types       # Source types (journal, repository, etc.)
+client.institution_types  # Institution types (education, company, etc.)
+client.licenses           # Open access licenses (CC BY, etc.)
+client.awards             # Research grants and funding awards
 ```
 
 ## Single Entity Lookup
@@ -49,6 +66,12 @@ works = client.works.get(["W2741809807", "W2100837269"])
 
 # Random
 work = client.works.random()
+
+# Reference entities use their own ID schemes
+country = client.countries.get("US")
+continent = client.continents.get("Q46")
+lang = client.languages.get("en")
+domain = client.domains.get("1")
 ```
 
 ## Finding Works by Name
@@ -159,6 +182,25 @@ results = client.works.sample(100, seed=42).get()
 results = client.institutions.autocomplete("harvard")
 ```
 
+## Special Endpoints
+
+```python
+# Check rate limit status (requires API key)
+rl = client.rate_limit()
+print(f"Remaining: ${rl.remaining_cost_today_usd}")
+
+# List available changefiles for bulk data sync
+dates = client.changefiles()
+entries = client.changefile("2026-03-18")
+for entry in entries:
+    print(f"{entry.entity}: {entry.records} records")
+    for fmt, info in entry.formats.items():
+        print(f"  {fmt}: {info.size_display} - {info.url}")
+
+# Download a PDF ($0.01 per download)
+client.download_pdf("W2741809807", "/tmp/paper.pdf")
+```
+
 ## Markdown Rendering
 
 All entities support `.to_markdown()` for LLM-friendly output:
@@ -220,22 +262,40 @@ works = client.works.filter(authorships={"author": {"id": author_id}}).get(10)
 ### Topic
 `id`, `display_name`, `description`, `keywords`, `subfield`, `field`, `domain`, `siblings`
 
+### Domain / Field / Subfield
+`id`, `display_name`, `description`, `ids`, `display_name_alternatives`, `works_count`, `cited_by_count`, `siblings`. Domain has `fields`, Field has `domain` + `subfields`, Subfield has `field` + `domain` + `topics`.
+
+### Country
+`id`, `display_name`, `country_code`, `continent`, `is_global_south`, `works_count`, `cited_by_count`
+
+### Award
+`id`, `display_name`, `funder`, `funder_award_id`, `funded_outputs_count`
+
 ## Error Handling
 
 ```python
-from pyopenalex.exceptions import NotFoundError, RateLimitError, APIError
+from pyopenalex import (
+    AuthenticationError,
+    NotFoundError,
+    RateLimitError,
+    APIError,
+)
 
 try:
     work = client.works.get("W0000000000")
 except NotFoundError:
     ...
+except AuthenticationError:
+    ...  # 401: invalid or missing API key
 except RateLimitError:
-    ...
+    ...  # 403: burst limit (retried), 429: daily limit (immediate)
 except APIError as e:
     print(e.status_code)
 ```
 
-Retries with exponential backoff are automatic for 429 and 5xx responses.
+- **403** (burst rate limit): retries with exponential backoff
+- **429** (daily limit): fails immediately with actionable message
+- **5xx** (server error): retries with exponential backoff
 
 ## Common Filter Fields (Works)
 
