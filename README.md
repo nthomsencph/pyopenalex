@@ -19,8 +19,10 @@ with OpenAlex() as client:
 ## Installation
 
 ```bash
-pip install pyopenalex
+uv add pyopenalex
 ```
+
+(or `pip install pyopenalex` for the boomers)
 
 Requires Python 3.10+.
 

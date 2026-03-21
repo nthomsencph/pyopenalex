@@ -4,7 +4,7 @@
 
 PyOpenAlex wraps the OpenAlex API (https://api.openalex.org) with Pydantic models for all entity types. The design follows FastAPI and Pydantic patterns: immutable query builders, typed models, filter expressions as descriptor functions, and environment-based configuration via pydantic-settings.
 
-Install with `pip install pyopenalex`. Requires Python 3.10+.
+Install with `uv add pyopenalex` (or `pip install pyopenalex` for the boomers). Requires Python 3.10+.
 
 ```python
 from pyopenalex import OpenAlex, gt

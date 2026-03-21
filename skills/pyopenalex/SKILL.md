@@ -5,7 +5,7 @@ description: Use this skill when writing Python code that queries OpenAlex (scho
 
 # PyOpenAlex
 
-A Pydantic-powered Python client for the OpenAlex API. Install with `pip install pyopenalex`.
+A Pydantic-powered Python client for the OpenAlex API. Install with `uv add pyopenalex` (or `pip install pyopenalex` for the boomers).
 
 ## Setup
 
